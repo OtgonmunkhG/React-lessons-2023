@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Hello react</h1>
+
+    <div id="root">
+
+    </div>
+    <div id="root"></div>
+    <div id="tests"></div>
+    <div class="img"></div>
+    <div id="lable-con">
+
+    </div>
+    <script type="text/babel">
+        function Hello() {
+            return <h1> Hello React</h1>
+        }
+        function CreateText() {
+                return <p>Welcome my darling</p>
+        }
+        function ImgCreate() {
+            return <img src="https://images.pexels.com/photos/13945391/pexels-photo-13945391.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load" alt=""/>
+        }
+
+        function GetInput() {
+            return <form action="">
+                        <label for="Option">What is your name</label>
+                        <br/>
+                        <input type="text"/>
+                        <select name="Name" id="">
+                            <option value="Country">Mongolia</option>
+                            <option value="Country">America</option>
+                            <option value="Country">Japaness</option>
+                        </select>
+                        <br/>
+                        <textarea name="Offer" id="" cols="30" rows="10"></textarea>
+                    </form>
+        }
+    
+        ReactDOM.render(<GetInput/>, document.getElementById("lable-con"))
+        ReactDOM.render(<ImgCreate/>, document.getElementsByClassName("img")[0])
+        ReactDOM.render(<CreateText />, document.getElementById("tests"))
+        //exercises
+        ReactDOM.render(<Hello />, document.getElementById("root"))
+    </script>
+
+
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</body>
+
+</html>
