@@ -2,14 +2,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 // import up from './products/up.png';
 // import logoImage from './products/image.png';
-// import Product from './Product';
+import Product from './Product';
 // import ProductTwo from './ProductTwo';
 // import ProductThree from './ProductThree';
 // import ProductFour from './ProductFour';
-import {ProductFunc, Product2, Product3, Product4} from './ProductFunc';
+import ProductFunc from './ProductFunc';
+import products from './Seed';
 import './App.css';
 
 function App() {
+  const productList = products.map((product) => {
+    console.log(product);
+    return <ProductFunc
+      title={product.title}
+      id={product.id}
+      description={product.description}
+      url={product.url}
+      votes={product.votes}
+      submitterAvatarUrl={product.submitterAvatarUrl}
+      productImageUrl={product.productImageUrl}
+    />
+  })
+  const productList2 = products.map((product) => {
+    return <ProductFunc
+      title={product.title}
+      id={product.id}
+      description={product.description}
+      url={product.url}
+      votes={product.votes}
+      submitterAvatarUrl={product.submitterAvatarUrl}
+      productImageUrl={product.productImageUrl}
+      />
+   })
   return (
     <div className="App">
       <header className="App-header">
@@ -17,11 +41,11 @@ function App() {
         </h1>
       </header>
       <div className="container">
-        <ProductFunc />
-        <Product2/>
-        <Product3/>
-         <Product4/>
-        
+        {productList}
+        {productList2}
+
+
+
 
       </div>
 
