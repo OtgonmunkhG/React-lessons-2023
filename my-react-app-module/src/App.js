@@ -10,6 +10,7 @@ import ProductFunc from './ProductFunc';
 import products from './Seed';
 import './App.css';
 
+
 function App() {
   const productList = products.map((product) => {
     console.log(product);
@@ -21,6 +22,7 @@ function App() {
       votes={product.votes}
       submitterAvatarUrl={product.submitterAvatarUrl}
       productImageUrl={product.productImageUrl}
+      stars={product.stars}
     />
   })
   const productList2 = products.map((product) => {
@@ -48,6 +50,7 @@ function App() {
 
 
       </div>
+      
 
     </div>
 
