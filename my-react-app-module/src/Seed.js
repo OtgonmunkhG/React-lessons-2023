@@ -10,7 +10,8 @@ function generateVoteCount() {
         votes: generateVoteCount(),
         submitterAvatarUrl: 'products/avatars/daniel.jpg',
         productImageUrl: 'products/image-aqua.png',
-        stars: 4
+        stars: 4,
+        
     },
     {
         id: 2,

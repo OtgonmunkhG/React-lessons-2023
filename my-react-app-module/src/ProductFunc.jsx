@@ -13,23 +13,23 @@ import products from './Seed';
 
 function ProductFunc(props) {
 
-    const [votes, setVotes] = useState(props.votes)
+    
     const [stars, setStars] = useState(props.stars)
 
     function handleDownVote (props) {
-        setVotes(votes - 1)
-        setStars(stars - 1)
+        // setVotes(votes - 1)
+        // setStars(stars - 1)
       
     }
     function handleUpVote(props) {
-        setVotes(votes + 1)
+        // setVotes(votes + 1)
 
-        if(stars > 5) {
-            setStars(0)
-        } else{
-            setStars(stars + 1)
-        }
-        console.log(stars);
+        // if(stars > 5) {
+        //     setStars(0)
+        // } else{
+        //     setStars(stars + 1)
+        // }
+        // console.log(stars);
         // let newProducts = []
         // const foundProduct = products.map(product => {
         //     if(product.id == props.id){
@@ -42,8 +42,8 @@ function ProductFunc(props) {
 
 
 
-        console.log("upvoted");
-        console.log(props.id);
+        // console.log("upvoted");
+        // console.log(props.id);
         // let count = props.votes + 1;
         // console.log(props.votes);
         // return count;
@@ -52,13 +52,13 @@ function ProductFunc(props) {
         <div className="section d-flex">
             <img src={props.productImageUrl}></img>
             <div className="intro">
-                <a href='#' onClick={() => { handleUpVote(props) }}>
+                <a onClick={() => props.onVote(props.id)}>
                     <i className="bi bi-caret-up-fill"></i>
                 </a>
-                <a href='#' onClick={() => { handleDownVote(props) }}>
+                <a  onClick={() => { handleDownVote(props) }}>
                     <i className="bi bi-caret-down-fill"></i>
                 </a>
-                <span>{votes}</span>
+                <span>{props.votes}</span>
                 <Rating
                     initialValue={stars}
                 />

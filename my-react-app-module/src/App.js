@@ -9,11 +9,12 @@ import Product from './Product';
 import ProductFunc from './ProductFunc';
 import products from './Seed';
 import './App.css';
+import { useState } from 'react';
 
 
 function App() {
   const productList = products.map((product) => {
-    console.log(product);
+    // console.log(product);
     return <ProductFunc
       title={product.title}
       id={product.id}
@@ -25,6 +26,37 @@ function App() {
       stars={product.stars}
     />
   })
+
+  const [productList4, setProductList] = useState(products)
+
+
+  function handleProductUpVote(productId) {
+
+    // console.log('upVote', productId);
+    // const foundProduct = products.filter(product => {
+    //   if(product.id == productId){
+    //     return product
+    //   }
+    // }) 
+
+    // foundProduct[0].votes = foundProduct[0].votes + 1
+    // console.log(foundProduct[0].votes);
+    console.log(products);
+
+    // /change votes inproducts array
+    const newProducts = productList4.map(product => {
+      if (product.id === productId) {
+        return Object.assign({}, product, {
+          votes: product.votes + 1
+        })
+
+      } else {
+        return product;
+      }
+    })
+    console.log(newProducts);
+    setProductList(newProducts)
+  }
   const productList2 = products.map((product) => {
     return <ProductFunc
       title={product.title}
@@ -34,8 +66,10 @@ function App() {
       votes={product.votes}
       submitterAvatarUrl={product.submitterAvatarUrl}
       productImageUrl={product.productImageUrl}
-      />
-   })
+      onVote={handleProductUpVote}
+      stars={product.stars}
+    />
+  })
   return (
     <div className="App">
       <header className="App-header">
@@ -43,14 +77,14 @@ function App() {
         </h1>
       </header>
       <div className="container">
-        {productList}
+        {/* {productList} */}
         {productList2}
 
 
 
 
       </div>
-      
+
 
     </div>
 
