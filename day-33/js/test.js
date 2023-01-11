@@ -14,3 +14,17 @@ const myPromise = new Promise((resolve, rejected) => {
        return rejected(isPlaying)
     }
 })
+const id = 45;
+const URL = `..${id}`
+
+const fetchResult = fetch(URL);
+fetchResult.then(result => 
+    result.json()
+    ).then(data => {
+        console.log(data);
+    })
+
+    const fetchedResult = await fetch(URL);
+    console.log(fetchedResult);
+    const JSONResult = await fetchResult.json()
+    console.log(JSONResult);
