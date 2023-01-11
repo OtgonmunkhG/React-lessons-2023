@@ -18,11 +18,8 @@ function ProductFunc(props) {
 
     function handleDownVote (props) {
         setVotes(votes - 1)
-        if(stars < 5){
-            setStars(5)
-        } else{
-            setStars(stars - 1 )
-        }
+        setStars(stars - 1)
+      
     }
     function handleUpVote(props) {
         setVotes(votes + 1)
