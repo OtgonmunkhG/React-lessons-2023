@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 // import up from './products/up.png';
 // import logoImage from './products/image.png';
-import Product from './Product';
+// import Product from './Product';
 // import ProductTwo from './ProductTwo';
 // import ProductThree from './ProductThree';
 // import ProductFour from './ProductFour';
@@ -13,22 +13,34 @@ import { useState } from 'react';
 
 
 function App() {
-  const productList = products.map((product) => {
-    // console.log(product);
-    return <ProductFunc
-      title={product.title}
-      id={product.id}
-      description={product.description}
-      url={product.url}
-      votes={product.votes}
-      submitterAvatarUrl={product.submitterAvatarUrl}
-      productImageUrl={product.productImageUrl}
-      stars={product.stars}
-    />
-  })
+  // const productList = products.map((product) => {
+  //   // console.log(product);
+  //   return <ProductFunc
+  //     title={product.title}
+  //     id={product.id}
+  //     description={product.description}
+  //     url={product.url}
+  //     votes={product.votes}
+  //     submitterAvatarUrl={product.submitterAvatarUrl}
+  //     productImageUrl={product.productImageUrl}
+  //     stars={product.stars}
+  //   />
+  // })
 
   const [productList4, setProductList] = useState(products)
-
+  function hanleProductDownVote(productId) {
+    const lastProducts = productList4.map(product => {
+      if(product.id === productId) {
+        return Object.assign({}, product, {
+          votes: product.votes - 1
+        })
+      } else {
+        return product;
+      }
+    })
+    console.log(lastProducts);
+    setProductList(lastProducts)
+  }
 
   function handleProductUpVote(productId) {
 
@@ -56,8 +68,10 @@ function App() {
     })
     console.log(newProducts);
     setProductList(newProducts)
+
+    
   }
-  const productList2 = products.map((product) => {
+  const productList2 = productList4.map((product) => {
     return <ProductFunc
       title={product.title}
       id={product.id}
@@ -67,6 +81,7 @@ function App() {
       submitterAvatarUrl={product.submitterAvatarUrl}
       productImageUrl={product.productImageUrl}
       onVote={handleProductUpVote}
+      offVote={hanleProductDownVote}
       stars={product.stars}
     />
   })

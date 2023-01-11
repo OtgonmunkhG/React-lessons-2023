@@ -55,7 +55,7 @@ function ProductFunc(props) {
                 <a onClick={() => props.onVote(props.id)}>
                     <i className="bi bi-caret-up-fill"></i>
                 </a>
-                <a  onClick={() => { handleDownVote(props) }}>
+                <a  onClick={() => { props.offVote(props.id) }}>
                     <i className="bi bi-caret-down-fill"></i>
                 </a>
                 <span>{props.votes}</span>
