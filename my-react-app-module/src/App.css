@@ -1,1 +1,35 @@
 
+.App {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .container img {
+    width: 300px;
+    height: 200px;
+  }
+  .section {
+    display: flex;
+    gap: 30px;
+    margin: 20px;
+    line-height: 1;
+  }
+  .intro {
+    margin-top: 30px;
+  }
+  .intro img {
+    border-radius: 50%;
+    max-width: 20px;
+    max-height: 20px;
+    margin: 5px;
+  }
+  .section img {
+    width: 200px;
+    height: 150px;
+  }
+  .name {
+    color: rgb(40, 173, 217);
+  }
+  .submit {
+    color: grey;
+    padding-top: 10px;
+  }

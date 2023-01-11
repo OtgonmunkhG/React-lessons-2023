@@ -10,6 +10,7 @@ function generateVoteCount() {
         votes: generateVoteCount(),
         submitterAvatarUrl: 'products/avatars/daniel.jpg',
         productImageUrl: 'products/image-aqua.png',
+        stars: 4
     },
     {
         id: 2,
@@ -19,6 +20,7 @@ function generateVoteCount() {
         votes: generateVoteCount(),
         submitterAvatarUrl: 'products/avatars/kristy.png',
         productImageUrl: 'products/image-rose.png',
+        stars: 5
     },
     {
         id: 3,
@@ -28,6 +30,7 @@ function generateVoteCount() {
         votes: generateVoteCount(),
         submitterAvatarUrl: 'products/avatars/veronika.jpg',
         productImageUrl: 'products/image-steel.png',
+        stars: 3
     },
     {
         id: 4,
@@ -37,6 +40,7 @@ function generateVoteCount() {
         votes: generateVoteCount(),
         submitterAvatarUrl: 'products/avatars/molly.png',
         productImageUrl: 'products/image-yellow.png',
+        stars: 1
     },
 ];
 export default products;
