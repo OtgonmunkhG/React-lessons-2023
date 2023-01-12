@@ -30,7 +30,7 @@ function App() {
       </div>
       <div id="ex-2">
         <p>{inputText}</p>
-        <input value={inputText} onChange={ (e) => {handleInput(e)}}></input>
+        <input value={inputText} onChange={(e) => { handleInput(e) }}></input>
       </div>
     </div>
   );
