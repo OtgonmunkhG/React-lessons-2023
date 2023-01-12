@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import Exercises from './components/Exercises';
 import './App.css';
 import Counter from './components/Counter';
 import List from './components/SpreadArray';
@@ -39,6 +40,7 @@ function App() {
         <Counter/>
         <UpdateArrays/>
         <List/>
+        <Exercises/>
        
       </div>
     </div>
