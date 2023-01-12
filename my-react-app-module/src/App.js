@@ -43,10 +43,6 @@ function App() {
       <div className="container">
         {productList}
         {productList2}
-
-
-
-
       </div>
 
     </div>
