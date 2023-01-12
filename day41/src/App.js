@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import './App.css';
+import Counter from './components/Counter';
 
 function App() {
   const [counter, setCounter] = useState(0)
@@ -31,6 +32,7 @@ function App() {
       <div id="ex-2">
         <p>{inputText}</p>
         <input value={inputText} onChange={(e) => { handleInput(e) }}></input>
+        <Counter/>
       </div>
     </div>
   );
