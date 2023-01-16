@@ -15,12 +15,12 @@ function App() {
     <div>
       <h1>Day-43-Router</h1>
       <div id='navbar'>
-        <a href='/'>Home</a>
-        <a href='/about'>About</a>
-        <a href='/about/test'>Test</a>
-        <a href='/login'>Login</a>
-        <a href='/register'>Register</a>
-        <a href='/feedback'>FeedbackForm</a>
+        <Link to={'/'}>Home</Link>
+        <Link to={'/about'}>About</Link>
+        <Link to={'/about/test'}>Test</Link>
+        <Link to={'/login'}>Login</Link>
+        <Link to={'/register'}>Register</Link>
+        <Link to={'/feedback'}>FeedbackForm</Link>
       </div>
       <Routes>
         <Route path="/" element={<HomeFunc />} />
