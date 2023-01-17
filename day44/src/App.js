@@ -7,6 +7,8 @@ import HomePage from './compenonts/Home';
 import AboutPage from './compenonts/About';
 import Movies from './compenonts/Movies';
 import Movie from './compenonts/Movie'
+import GalleryPage from './compenonts/Gallery';
+import Toastiry from './compenonts/Toastiry';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       <Route path={"/about"} element={<AboutPage/>}/>
       <Route path={"/movies"} element={<Movies/>}/>
       <Route path={"/movie/:id"} element={<Movie/>}/>
+      <Route path={"/gallery"} element={<GalleryPage/>}/>
+      <Route path={"/toast"} element={<Toastiry/>}/>
      </Routes>
     </div>
   );

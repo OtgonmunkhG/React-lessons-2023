@@ -24,6 +24,8 @@ export default function Index() {
             <Link to={'/accordion'}>Accordion Page</Link>
             <Link to={"/index"}>Index</Link>
             <Link to={"/movies"}>Movies page</Link>
+            <Link to={"/gallery"}>Image gallery  page</Link>
+            <Link to={"/toast"}>Toastiry page</Link>
             </div>
         </div>
     )
