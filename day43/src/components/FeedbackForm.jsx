@@ -3,7 +3,6 @@ export default function FeedbackForm() {
     const [ text, setText] = useState([]);
     const [isSending, setSending] = useState(false)
     const [isSend, setSent] = useState(false)
-    // let wait = "sending...";
     async function  handleClick(event) {
       event.preventDefault();
       console.log(event);
@@ -14,7 +13,7 @@ export default function FeedbackForm() {
     }
   
     if(isSend) {
-      return <h1>Thank's fo feedback</h1>
+      return <h1>Thank's for feedback</h1>
     }
   
   
@@ -35,13 +34,6 @@ export default function FeedbackForm() {
         onChange={e => setText(e.target.value)}>
         </textarea><br></br>
         <button>Send</button>
-        {/* <p> {text.map(t => {
-          return(
-            <div>
-              {t.first}
-            </div>
-          )
-        })}</p> */}
         {isSending && <p>sending...</p>}
        </form>
       </div>
