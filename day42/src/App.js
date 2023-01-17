@@ -7,6 +7,7 @@ function App() {
 
   function handleRegister(e) {
     e.preventDefault();
+    console.log(e);
 
     console.log(users);
     console.log(e.target.firstname.value);
