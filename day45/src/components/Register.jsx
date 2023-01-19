@@ -26,7 +26,7 @@ export default function Register() {
         <input type="password" name={"password"} /> <br />
         <label htmlFor="phone number">Phone Number:</label>
         <input type="phonenumber" name={"phonenumber"} /> <br />
-        <button>Show</button>
+        <button>Register</button>
       </form>
     </div>
   );
