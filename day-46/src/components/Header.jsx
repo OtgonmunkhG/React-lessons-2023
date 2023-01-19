@@ -1,5 +1,6 @@
 import { IoIosTrash } from "react-icons/io";
 export default function Header(props) {
+  console.log(props.wishList.length)
   return (
     <div className="ui menu">
       <div className="right menu">
