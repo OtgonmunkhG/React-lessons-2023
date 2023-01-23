@@ -16,13 +16,13 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <Input label={"first input"} value={text} onChange={onChange} />
+      <Input label={"first input"} value={text} onChange={onChange} />
       <Input label={"second input"} value={text} onChange={onChange} />
       <Anime />
       <Button />
-      <TopAnime /> */}
+      {/* <TopAnime />
       <Exercises />
-      <FindOdd />
+      <FindOdd /> */}
     </div>
   );
 }
