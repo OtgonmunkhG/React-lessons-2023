@@ -3,16 +3,21 @@ import { useState } from "react";
 export default function Counter() {
   const [counter, setCounter] = useState(0);
   const [isActive, setIsActive] = useState(false);
-
+  debugger;
   let className = "counter";
   if (isActive) {
-    className += "hover";
+    console.log(isActive);
+    className = "hover";
+    console.log("hover");
   }
   return (
     <div
-      className={counter}
+      className={className}
       onPointerEnter={() => {
-        setIsActive(true);
+        setIsActive((isActive = true));
+      }}
+      onPointerLeave={() => {
+        setIsActive(false);
       }}
     >
       {counter} <br />
