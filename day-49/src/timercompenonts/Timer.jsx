@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import TimerActionButton from "./TimerActionButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { renderElapsedString } from "./Helpers";
 
 export default function Timer({
@@ -13,25 +13,40 @@ export default function Timer({
   project,
   elapsed,
   runningSince,
-  //   runningTime,
 }) {
-  const timer = renderElapsedString(elapsed, runningSince);
-  //   const [timerIsRunning, setTimerIsRunning] = useState(false);
+  const [time, setTime] = useState(0)
+  const [timerIsRunning, setTimerIsRunning] = useState(false);
 
-  const [startTime, setStartTime] = useState(0);
-  const [now, setNow] = useState(0);
+  const [timerId, setTimerId] = useState(0);
 
-  let secondsPassed = 0;
-  if (startTime != 0 && now != 0) {
-    secondsPassed = (now - startTime) / 1000;
-  }
-  function handleClick() {
-    setStartTime(Date.now());
-    setNow(Date.now);
-    setInterval(() => {
-      setNow(Date.now());
-    }, 10);
-  }
+  useEffect(() => {
+    let intervalId = null;
+    if(timerIsRunning) {
+      setInterval(() => {
+        setTimerIsRunning(Date.now())
+      }, 1000)
+      setTimerId(intervalId)
+    } else {
+      clearInterval(timerId)
+    }
+  })
+
+
+  // let secondsPassed = 0;
+  // if (startTime != 0 && now != 0) {
+  //   secondsPassed = (now - startTime) / 1000;
+  // }
+  // function handleClick() {
+  //   setStartTime(Date.now());
+  //   setNow(Date.now);
+  //   setInterval(() => {
+  //     setNow(Date.now());
+  //   }, 10);
+  // }
+
+  // function stopClick() {
+
+  // }
 
   return (
     <Container maxWidth="sm">
@@ -55,7 +70,7 @@ export default function Timer({
             alignItems: "center",
           }}
         >
-          <h1>{secondsPassed.toFixed(3)}</h1>
+          <h1>{time}</h1>
         </Box>
         <Box
           sx={{
@@ -64,7 +79,7 @@ export default function Timer({
             alignItems: "center",
           }}
         >
-          <h1>{timer}</h1>
+          <h1>{time}</h1>
         </Box>
         <Box
           sx={{
@@ -79,7 +94,10 @@ export default function Timer({
         </Box>
         <TimerActionButton
           //   isTimerRunning={timerIsRunning}
-          onStartClick={handleClick}
+          onStartClick={() => {
+            setTimerIsRunning(timerIsRunning = true)
+          }}
+          onStopClick={() => setTimerIsRunning(timerIsRunning = false)}
         />
       </Card>
     </Container>
