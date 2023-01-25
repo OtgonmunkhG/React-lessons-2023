@@ -1,5 +1,6 @@
 import { Card, Grid, Button, CardContent, TextField } from "@mui/material";
-export default function TimerForm({ title, project }) {
+export default function TimerForm({ id, title, project }) {
+  const submitText = id ? "Update" : "Create";
   return (
     <div>
       <h1>TimerForm</h1>
@@ -28,7 +29,7 @@ export default function TimerForm({ title, project }) {
                 </Grid>
                 <Grid item xs={12}>
                   <Button color={"success"} variant={"outlined"}>
-                    Create
+                    {submitText}
                   </Button>
                   <Button color={"error"} variant={"outlined"}>
                     Cancel
