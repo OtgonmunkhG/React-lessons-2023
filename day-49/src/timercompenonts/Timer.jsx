@@ -16,6 +16,7 @@ export default function Timer({
 }) {
   const [time, setTime] = useState(0)
   const [timerIsRunning, setTimerIsRunning] = useState(false);
+  const [timerIsPause, setTimerIsPause] = useState(true)
 
   const [timerId, setTimerId] = useState(0);
 
@@ -29,7 +30,7 @@ export default function Timer({
     } else {
       clearInterval(timerId)
     }
-  })
+  }, [timerIsRunning])
 
 
   // let secondsPassed = 0;
@@ -95,6 +96,7 @@ export default function Timer({
         <TimerActionButton
           //   isTimerRunning={timerIsRunning}
           onStartClick={() => {
+            
             setTimerIsRunning(timerIsRunning = true)
           }}
           onStopClick={() => setTimerIsRunning(timerIsRunning = false)}
