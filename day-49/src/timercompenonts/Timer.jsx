@@ -8,46 +8,41 @@ import TimerActionButton from "./TimerActionButton";
 import { useEffect, useState } from "react";
 import { renderElapsedString } from "./Helpers";
 
-export default function Timer({
-  title,
-  project,
-  elapsed,
-  runningSince,
-}) {
-  const [time, setTime] = useState(0)
+export default function Timer({ title, project, elapsed, runningSince }) {
   const [timerIsRunning, setTimerIsRunning] = useState(false);
-  const [timerIsPause, setTimerIsPause] = useState(true)
+  const [timerIsPause, setTimerIsPause] = useState(true);
 
-  const [timerId, setTimerId] = useState(0);
+  const [timer, setTime] = renderElapsedString(elapsed, runningSince);
+
+  const [startTime, setStartTime] = useState(null);
+  const [now, setNow] = useState(null);
 
   useEffect(() => {
     let intervalId = null;
-    if(timerIsRunning) {
-      setInterval(() => {
-        setTimerIsRunning(Date.now())
-      }, 1000)
-      setTimerId(intervalId)
+    if (timerIsRunning && timerIsPause === false) {
+      intervalId = setInterval(() => {
+        setNow((now) => now + 1000);
+      }, 1000);
     } else {
-      clearInterval(timerId)
+      clearInterval(intervalId);
     }
-  }, [timerIsRunning])
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [timerIsRunning, timerIsPause]);
 
-
-  // let secondsPassed = 0;
-  // if (startTime != 0 && now != 0) {
-  //   secondsPassed = (now - startTime) / 1000;
-  // }
-  // function handleClick() {
-  //   setStartTime(Date.now());
-  //   setNow(Date.now);
-  //   setInterval(() => {
-  //     setNow(Date.now());
-  //   }, 10);
-  // }
-
-  // function stopClick() {
-
-  // }
+  const handleChange = () => {
+    setStartTime(Date.now());
+    setNow(Date.now());
+    setTimerIsPause(false);
+  };
+  const handleClick = () => {
+    setTimerIsPause(!timerIsPause);
+  };
+  let secondsPassed = 0;
+  if (startTime != null && now != null) {
+    secondsPassed = (now - startTime) / 1000;
+  }
 
   return (
     <Container maxWidth="sm">
@@ -71,7 +66,7 @@ export default function Timer({
             alignItems: "center",
           }}
         >
-          <h1>{time}</h1>
+          <h1>{secondsPassed}</h1>
         </Box>
         <Box
           sx={{
@@ -80,7 +75,7 @@ export default function Timer({
             alignItems: "center",
           }}
         >
-          <h1>{time}</h1>
+          <h1>{timer}</h1>
         </Box>
         <Box
           sx={{
@@ -94,12 +89,16 @@ export default function Timer({
           <AutoFixHighIcon />
         </Box>
         <TimerActionButton
-          //   isTimerRunning={timerIsRunning}
+          timerIsRunning={timerIsRunning}
+          timerIsPause={timerIsPause}
           onStartClick={() => {
-            
-            setTimerIsRunning(timerIsRunning = true)
+            setTimerIsRunning((timerIsRunning = true));
           }}
-          onStopClick={() => setTimerIsRunning(timerIsRunning = false)}
+          onStopClick={() => {
+            setTimerIsRunning((timerIsRunning = false));
+            handleClick = { handleClick };
+            handleChange = { handleChange };
+          }}
         />
       </Card>
     </Container>
