@@ -7,9 +7,9 @@ export default function EditableTimerList({
   onStopClick,
   onFormSubmit,
 }) {
-  const timerList = timers.map((timer, ind) => (
+  const timerList = timers.map((timer, index) => (
     <EditableTimer
-      key={ind}
+      key={index}
       id={timer.id}
       title={timer.title}
       project={timer.project}
@@ -21,5 +21,6 @@ export default function EditableTimerList({
       onFormSubmit={onFormSubmit}
     />
   ));
+
   return <div>{timerList}</div>;
 }

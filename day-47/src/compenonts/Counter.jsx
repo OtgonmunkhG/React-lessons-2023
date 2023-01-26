@@ -14,7 +14,7 @@ export default function Counter() {
     <div
       className={className}
       onPointerEnter={() => {
-        setIsActive((isActive = true));
+        setIsActive(true);
       }}
       onPointerLeave={() => {
         setIsActive(false);
