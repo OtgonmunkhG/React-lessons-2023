@@ -9,7 +9,7 @@ export default function TimerActionButton({
     <div>
       {isTimerRunning ? (
         <Button
-          color={"error"}
+          color="error"
           fullWidth={true}
           variant={"outlined"}
           onClick={onStopClick}
@@ -18,7 +18,7 @@ export default function TimerActionButton({
         </Button>
       ) : (
         <Button
-          color={"success"}
+          color="success"
           fullWidth={true}
           variant={"outlined"}
           onClick={onStartClick}

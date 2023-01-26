@@ -14,7 +14,6 @@ export default function ToggableTimerForm({ onFormSubmit }) {
   function handleFormClose() {
     setIsOpen(false);
   }
-
   return (
     <div>
       {isOpen ? (
