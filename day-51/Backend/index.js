@@ -1,6 +1,5 @@
 console.log("day-51 : API Express js");
 
-const { response } = require("express");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -28,7 +27,6 @@ app.get("/data", (request, response) => {
 });
 
 app.post("/data", (request, response) => {
-  //   console.log(request.headers);
   console.log(request.body);
   const length = data.length;
   const newData = {
