@@ -1,8 +1,9 @@
 import { useState } from "react";
 import TimerForm from "./TimerForm";
 
-export default function ToggleableTimerForm({ onFormSubmit }) {
+export default function ToggableTimerForm({ onFormSubmit }) {
   const [isOpen, setIsOpen] = useState(false);
+
   function handleFormSubmit(timer) {
     onFormSubmit(timer);
     setIsOpen(false);
@@ -22,7 +23,9 @@ export default function ToggleableTimerForm({ onFormSubmit }) {
         />
       ) : (
         <div>
-          <button onClick={handleFormOpen}> Click me</button>
+          <button onClick={handleFormOpen} className="margin-auto">
+            Click me
+          </button>
         </div>
       )}
     </div>
