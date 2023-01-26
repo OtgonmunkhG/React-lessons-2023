@@ -9,7 +9,7 @@ const PORT = 8000;
 const server = http.createServer((request, response) => {
   response.statusCode = 200;
   response.setHeader("Content-Type", "text/plan");
-  response.end("hello world\n");
+  response.end("Hello \n world");
 });
 server.listen(PORT, () => {
   console.log(`server is running at http://localhost:${PORT}`);
