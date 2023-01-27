@@ -3,6 +3,7 @@ console.log("day-51 : API Express js");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { response } = require("express");
 
 const app = express();
 
@@ -29,19 +30,34 @@ app.get("/data", (request, response) => {
 app.post("/data", (request, response) => {
   console.log(request.body);
   const length = data.length;
-  const newData = {
+  const requestData = {
     id: length + 1,
     name: request.body.name,
     major: request.body.major,
   };
+  data = [...data, requestData];
   response.json(data);
-  data.push(newData);
 });
 app.delete("/data", (request, response) => {
+  const deleteData = data.filter((d) => d.id !== request.body.id);
+  data = deleteData;
+
+  response.json(data);
+});
+app.put("/data", (request, response) => {
+  const found = data.filter((n) => n.id !== request.body.id);
+  console.log(found);
   console.log(request.body);
-  const newData = data.filter((d) => d.id !== request.body.id);
-  data = newData;
   console.log(data);
+
+  const newData = data.map((d) => {
+    if (d.id === request.body.id) {
+      (d.name = request.body.name), (d.major = request.body.major);
+    }
+    return d;
+  });
+  data = newData;
+
   response.json(data);
 });
 
