@@ -1,18 +1,22 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import InputForm from "./component/InputForm";
+import UpdateForm from "./component/UpdateForm";
 
 const GET_DATA_URL = "http://localhost:8080/data";
 const DELETE_DATA_URL = "http://localhost:8080/data";
 function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [currentData, setCurrentData] = useState({});
 
   async function fetchData() {
     const FETCHED_DATA = await fetch(GET_DATA_URL);
     const JSON = await FETCHED_DATA.json();
     setData(JSON);
   }
+
   async function deleteData(data) {
     const options = {
       method: "DELETE",
@@ -36,6 +40,10 @@ function App() {
     };
     deleteData(data);
   }
+  function handleEdit(data) {
+    setCurrentData(data);
+    setIsOpenForm(true);
+  }
 
   return (
     <div className="App">
@@ -45,6 +53,15 @@ function App() {
         setIsLoading={setIsLoading}
         setData={setData}
       />
+      {isOpenForm ? (
+        <UpdateForm
+          setCurrentData={setCurrentData}
+          setData={setData}
+          currentData={currentData}
+        />
+      ) : (
+        <div></div>
+      )}
 
       {isLoading
         ? "... Loading"
@@ -58,6 +75,7 @@ function App() {
                 <button onClick={() => handleDelete(d.id)}>
                   Delete Button
                 </button>
+                <button onClick={() => handleEdit(d)}>Edit</button>
               </div>
             );
           })}
