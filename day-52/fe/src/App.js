@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState({
+    id: "",
+    username: "",
+    age: "",
+  })
 
   const URL = "http://localhost:8080/users";
 
@@ -74,12 +79,12 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label>
           User Name:
-          <input name="username"></input>
+          <input name="username" value={currentUser.username}></input>
         </label>{" "}
         <br /> <br />
         <label>
           Age:
-          <input name="age"></input>
+          <input name="age" value={currentUser.age}></input>
         </label>{" "}
         <br /> <br />
         <button>Submit</button>
