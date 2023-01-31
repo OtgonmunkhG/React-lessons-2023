@@ -1,39 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs"); //file system module
+const { response } = require("express");
+const { request } = require("http");
+const { ifError } = require("assert");
 
 const app = express();
 const PORT = 8080;
 
 app.use(cors());
 app.use(express.json());
-
-app.put("/users", (request, response) => {
-  fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
-    if (readError) {
-      response.json({
-        status: "file error",
-        data: [],
-      });
-    }
-
-    const readObject = JSON.parse(readData);
-    const filteredObject = readObject.map();
-
-    fs.writeFile("./data/users.json", "utf-8", (writeError) => {
-      if (writeError) {
-        response.json({
-          status: "file error",
-          data: [],
-        });
-      }
-      response.json({
-        status: "success",
-        data: [],
-      });
-    });
-  });
-});
 
 app.delete("/users", (request, response) => {
   const body = request.body;
@@ -120,6 +96,45 @@ app.post("/users", (request, response) => {
         response.json({
           status: "success",
           data: dataObject,
+        });
+      }
+    );
+  });
+});
+
+app.put("/users", (request, response) => {
+  console.log(request.body);
+  fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "file error",
+        data: [],
+      });
+    }
+
+    const savedData = JSON.parse(readData);
+    console.log(savedData);
+    const changedData = savedData.map((d) => {
+      if (d.id === request.body.id) {
+        (d.username = request.body.username), (d.age = request.body.age);
+      }
+      return d;
+    });
+    console.log(changedData);
+
+    fs.writeFile(
+      "./data/users.json",
+      JSON.stringify(changedData),
+      (writeError) => {
+        if (writeError) {
+          response.json({
+            status: "file error",
+            data: [],
+          });
+        }
+        response.json({
+          status: "success",
+          data: changedData,
         });
       }
     );

@@ -1,14 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState({
+  const newUser = {
     id: "",
     username: "",
     age: "",
-  })
+  };
+  const [users, setUsers] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [currentUser, setCurrentUser] = useState(newUser);
 
   const URL = "http://localhost:8080/users";
 
@@ -27,22 +28,44 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
-      username: e.target.username.value,
-      age: e.target.age.value,
-    };
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    };
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    if (!isUpdate) {
+      const postData = {
+        username: e.target.username.value,
+        age: e.target.age.value,
+      };
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      };
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      console.log(FETCHED_JSON);
+      setUsers(FETCHED_JSON.data);
+    } else {
+      const putData = {
+        id: currentUser.id,
+        username: currentUser.username,
+        age: currentUser.age,
+      };
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(putData),
+      };
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      console.log(FETCHED_JSON);
+      setUsers(FETCHED_JSON.data);
+      setIsUpdate(false);
+      setCurrentUser(newUser);
+    }
   }
   async function handleDelete(userId) {
     const options = {
@@ -59,18 +82,29 @@ function App() {
     setUsers(FETCHED_JSON.data);
   }
   async function handleEdit(userId) {
-    const options = {
-      method: "UPDATE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-      }),
-    };
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON.data);
+    setIsUpdate(true);
+    console.log(userId);
+    const filteredUser = users.filter((user) => user.id === userId)[0]; //filter array butsaadag
+    if (filteredUser) {
+      setCurrentUser({
+        id: filteredUser.id,
+        age: filteredUser.age,
+        username: filteredUser.username,
+      });
+    }
+  }
+
+  function handleUserName(e) {
+    setCurrentUser({
+      ...currentUser,
+      username: e.target.value,
+    });
+  }
+  function handleUserAge(e) {
+    setCurrentUser({
+      ...currentUser,
+      age: e.target.value,
+    });
   }
   return (
     <div className="App">
@@ -79,17 +113,26 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label>
           User Name:
-          <input name="username" value={currentUser.username}></input>
+          <input
+            name="username"
+            value={currentUser.username}
+            onChange={handleUserName}
+          ></input>
         </label>{" "}
         <br /> <br />
         <label>
           Age:
-          <input name="age" value={currentUser.age}></input>
+          <input
+            name="age"
+            value={currentUser.age}
+            onChange={handleUserAge}
+          ></input>
         </label>{" "}
         <br /> <br />
-        <button>Submit</button>
+        <button>{isUpdate ? "Update" : "Submit"}</button>
       </form>
       <h3>Users List</h3>
+
       {users &&
         users.map((user, index) => {
           return (
