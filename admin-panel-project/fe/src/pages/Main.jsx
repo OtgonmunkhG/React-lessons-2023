@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 
-export default function Header() {
+export default function Main() {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>

@@ -16,10 +16,10 @@ import Toolbar from "@mui/material/Toolbar";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import Collapse from "@mui/material/Collapse";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import StarBorder from "@mui/icons-material/StarBorder";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Header from ".//Header";
+import Menu from "./Menu";
 
 const drawerWidth = 240;
 
@@ -32,12 +32,7 @@ export default function SideBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const handleChange = () => {
-    setShow(!show);
-  };
+ 
 
   const drawer = (
     <div>
@@ -48,7 +43,7 @@ export default function SideBar(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? (
+                {index === 0 ? (
                   <AccountCircleIcon />
                 ) : (
                   <BungalowRoundedIcon />
@@ -58,7 +53,9 @@ export default function SideBar(props) {
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItemButton onClick={handleClick}>
+        <ListItemButton onClick={() => {
+          setOpen(!open)
+        }}>
           <ListItemIcon>
             <ShoppingCartOutlinedIcon />
           </ListItemIcon>
@@ -68,27 +65,31 @@ export default function SideBar(props) {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Product manage" />
+              <Box  component="ul" sx={{ pl: 2 }}>
+                 <li>Product manager</li>
+                <li>Product Grid</li>
+                <li>Product page</li>
+              </Box>
             </ListItemButton>
           </List>
         </Collapse>
-        <ListItemButton onClick={handleChange}>
+        <ListItemButton onClick={() => {
+          setShow(!show)
+        }}>
           <ListItemIcon>
             <PersonRoundedIcon />
           </ListItemIcon>
           <ListItemText primary="Users" />
-          {open ? <ExpandLess /> : <ExpandMore />}
+          {show ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse in={show} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="User list" />
+              <Box  component="ul" sx={{ pl: 2 }}>
+                 <li>User id </li>
+                <li>User</li>
+                <li>Product page</li>
+              </Box>
             </ListItemButton>
           </List>
         </Collapse>
@@ -103,6 +104,7 @@ export default function SideBar(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <Header setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} />
+      <Menu />
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
