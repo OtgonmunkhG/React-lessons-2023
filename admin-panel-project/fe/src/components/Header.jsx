@@ -14,7 +14,9 @@ export default function Header({ setMobileOpen, mobileOpen }) {
     <AppBar
       position="fixed"
       sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        width: { sm: `calc(100%)` },
+         zIndex: (theme) => theme.zIndex.drawer + 1 
+     
       }}
     >
       <Toolbar>
@@ -23,7 +25,7 @@ export default function Header({ setMobileOpen, mobileOpen }) {
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
-          sx={{ mr: 1, display: { sm: "none" } }}
+          sx={{ mr: 1, display: { sm: "block" } }}
         >
           <MenuIcon />
         </IconButton>
