@@ -19,10 +19,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Header from ".//Header";
-import Menu from "./Menu";
 import { Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 
 const drawerWidth = 240;
@@ -87,9 +85,7 @@ export default function SideBar(props) {
           <ListItemIcon>
             <PersonRoundedIcon />
           </ListItemIcon>
-          <Link to="/users">
             <ListItemText primary="Users" />
-          </Link>
           {show ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={show} timeout="auto" unmountOnExit>
@@ -97,12 +93,16 @@ export default function SideBar(props) {
             <ListItemButton sx={{ pl: 4 }}>
               <Box component="ul" sx={{ pl: 2 }}>
                 <Button>
-                  <li>User id </li>
+                  <Link to="/users">
+                  <li>User list</li>
+                  </Link>
                 </Button>
-                <Button>
-                  <li>User</li>
+                <Link to="/users/add" >
+                  <Button>
+                  <li>User add</li>
                 </Button>
-                <li>Product page</li>
+                </Link>
+                <Button><li>user edit</li></Button>
               </Box>
             </ListItemButton>
           </List>
@@ -119,7 +119,6 @@ export default function SideBar(props) {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Header setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} />
-      {/* <Menu /> */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
