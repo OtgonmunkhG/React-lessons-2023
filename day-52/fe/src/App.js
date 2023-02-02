@@ -1,90 +1,53 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  fetchAllData,
+  deleteUser,
+  updateUser,
+  createUser,
+} from "./services/axiosUserServices";
 
 function App() {
+  const URL = "http://localhost:8080/users";
   const newUser = {
     id: "",
     username: "",
     age: "",
   };
+
   const [users, setUsers] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
   const [currentUser, setCurrentUser] = useState(newUser);
 
-  const URL = "http://localhost:8080/users";
-
   useEffect(() => {
-    fetchAllData();
+    fetchAllData(URL, setUsers);
   }, []);
 
-  async function fetchAllData() {
-    //fetch a data from localhost:8080/users
-    const FETCHED_DATA = await fetch(URL); //response
-    const FETCHED_JSON = await FETCHED_DATA.json(); // {status: "success" , data: [{id: ...}]}
-    setUsers(FETCHED_JSON.data);
+  async function handleDelete(userId) {
+    deleteUser(userId, URL, setUsers);
   }
-
-  console.log(users);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (!isUpdate) {
-      const postData = {
-        username: e.target.username.value,
-        age: e.target.age.value,
-      };
-
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      };
-      const FETCHED_DATA = await fetch(URL, options);
-      const FETCHED_JSON = await FETCHED_DATA.json();
-      console.log(FETCHED_JSON);
-      setUsers(FETCHED_JSON.data);
+      createUser(e, URL, setUsers);
     } else {
-      const putData = {
-        id: currentUser.id,
-        username: currentUser.username,
-        age: currentUser.age,
-      };
-      const options = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(putData),
-      };
-      const FETCHED_DATA = await fetch(URL, options);
-      const FETCHED_JSON = await FETCHED_DATA.json();
-      console.log(FETCHED_JSON);
-      setUsers(FETCHED_JSON.data);
-      setIsUpdate(false);
-      setCurrentUser(newUser);
+      updateUser(
+        currentUser,
+        URL,
+        setUsers,
+        setIsUpdate,
+        setCurrentUser,
+        newUser
+      );
     }
   }
-  async function handleDelete(userId) {
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-      }),
-    };
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON.data);
-  }
+
   async function handleEdit(userId) {
     setIsUpdate(true);
-    console.log(userId);
-    const filteredUser = users.filter((user) => user.id === userId)[0]; //filter array butsaadag
+    const filteredUser = users.filter((user) => user.id === userId)[0];
+
     if (filteredUser) {
       setCurrentUser({
         id: filteredUser.id,
@@ -100,16 +63,18 @@ function App() {
       username: e.target.value,
     });
   }
+
   function handleUserAge(e) {
     setCurrentUser({
       ...currentUser,
       age: e.target.value,
     });
   }
+
   return (
     <div className="App">
-      <h1>Day-52 NodeJS FS Module</h1>
-      <h3>Create user Form</h3>
+      <h1>Day-52 - NodeJS FS Module</h1>
+      <h3>Create User FORM</h3>
       <form onSubmit={handleSubmit}>
         <label>
           User Name:
@@ -117,22 +82,17 @@ function App() {
             name="username"
             value={currentUser.username}
             onChange={handleUserName}
-          ></input>
-        </label>{" "}
-        <br /> <br />
+          />
+        </label>
+        <br />
         <label>
           Age:
-          <input
-            name="age"
-            value={currentUser.age}
-            onChange={handleUserAge}
-          ></input>
-        </label>{" "}
-        <br /> <br />
+          <input name="age" value={currentUser.age} onChange={handleUserAge} />
+        </label>
+        <br />
         <button>{isUpdate ? "Update" : "Submit"}</button>
       </form>
       <h3>Users List</h3>
-
       {users &&
         users.map((user, index) => {
           return (
