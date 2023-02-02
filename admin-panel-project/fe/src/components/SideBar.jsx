@@ -21,6 +21,9 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Header from ".//Header";
 import Menu from "./Menu";
 import { Link } from "react-router-dom";
+import CssBaseline from "@mui/material/CssBaseline";
+import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -29,7 +32,9 @@ export default function SideBar(props) {
   const [show, setShow] = React.useState(true);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
- 
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
   const drawer = (
     <div>
       <Toolbar />
@@ -38,19 +43,17 @@ export default function SideBar(props) {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 ? (
-                  <AccountCircleIcon />
-                ) : (
-                  <BungalowRoundedIcon />
-                )}
+                {index === 0 ? <AccountCircleIcon /> : <BungalowRoundedIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItemButton onClick={() => {
-          setOpen(!open)
-        }}>
+        <ListItemButton
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
           <ListItemIcon>
             <ShoppingCartOutlinedIcon />
           </ListItemIcon>
@@ -62,17 +65,25 @@ export default function SideBar(props) {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }}>
-              <Box  component="ul" sx={{ pl: 2 }}>
-                 <li>Product manager</li>
-                <li>Product Grid</li>
-                <li>Product page</li>
+              <Box component="ul" sx={{ pl: 2 }}>
+                <Button>
+                  <li>Product manager</li>
+                </Button>
+                <Button>
+                  <li>Product Grid</li>
+                </Button>
+                <Button>
+                  <li>Product page</li>
+                </Button>
               </Box>
             </ListItemButton>
           </List>
         </Collapse>
-        <ListItemButton onClick={() => {
-          setShow(!show)
-        }}>
+        <ListItemButton
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
           <ListItemIcon>
             <PersonRoundedIcon />
           </ListItemIcon>
@@ -84,9 +95,13 @@ export default function SideBar(props) {
         <Collapse in={show} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }}>
-              <Box  component="ul" sx={{ pl: 2 }}>
-                 <li>User id </li>
-                <li>User</li>
+              <Box component="ul" sx={{ pl: 2 }}>
+                <Button>
+                  <li>User id </li>
+                </Button>
+                <Button>
+                  <li>User</li>
+                </Button>
                 <li>Product page</li>
               </Box>
             </ListItemButton>
@@ -97,15 +112,37 @@ export default function SideBar(props) {
     </div>
   );
 
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <Box sx={{ display: "flex" }}>
+      <CssBaseline />
       <Header setMobileOpen={setMobileOpen} mobileOpen={mobileOpen} />
-      <Menu />
+      {/* <Menu /> */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
         <Drawer
           variant="permanent"
           sx={{
