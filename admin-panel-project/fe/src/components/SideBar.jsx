@@ -20,6 +20,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Header from ".//Header";
 import Menu from "./Menu";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -53,6 +54,8 @@ export default function SideBar(props) {
           <ListItemIcon>
             <ShoppingCartOutlinedIcon />
           </ListItemIcon>
+          {/* <Link to="/">
+          </Link> */}
           <ListItemText primary="E-commerce" />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
@@ -73,7 +76,9 @@ export default function SideBar(props) {
           <ListItemIcon>
             <PersonRoundedIcon />
           </ListItemIcon>
-          <ListItemText primary="Users" />
+          <Link to="/users">
+            <ListItemText primary="Users" />
+          </Link>
           {show ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={show} timeout="auto" unmountOnExit>
