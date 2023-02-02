@@ -12,11 +12,8 @@ export default function Header({ setMobileOpen, mobileOpen }) {
   };
   return (
     <AppBar
-      position="fixed"
-      sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}
+     position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+       
     >
       <Toolbar>
         <IconButton
