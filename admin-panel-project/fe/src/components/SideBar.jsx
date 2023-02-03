@@ -19,7 +19,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Header from ".//Header";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Button } from "@mui/material";
 
@@ -85,24 +85,28 @@ export default function SideBar(props) {
           <ListItemIcon>
             <PersonRoundedIcon />
           </ListItemIcon>
-            <ListItemText primary="Users" />
+          <ListItemText primary="Users" />
           {show ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={show} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 4 }}>
               <Box component="ul" sx={{ pl: 2 }}>
-                <Button>
-                  <Link to="/users">
-                  <li>User list</li>
-                  </Link>
-                </Button>
-                <Link to="/users/add" >
+                <Link to="/users">
                   <Button>
-                  <li>User add</li>
-                </Button>
+                    <li>User list</li>
+                  </Button>
                 </Link>
-                <Button><li>user edit</li></Button>
+
+                <Link to="/users/add">
+                  <Button>
+                    <li>User add</li>
+                  </Button>
+                </Link>
+
+                <Button>
+                  <li>user edit</li>
+                </Button>
               </Box>
             </ListItemButton>
           </List>
@@ -155,6 +159,7 @@ export default function SideBar(props) {
         >
           {drawer}
         </Drawer>
+        <Outlet />
       </Box>
     </Box>
   );

@@ -1,4 +1,3 @@
-
 import { Container } from "@mui/system";
 import {
   Box,
@@ -10,11 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function UserAdd({handleSubmit}) {
-
-
-    return(
-            <Container maxWidth="lg" sx={{ margin: "0 auto", paddingBottom: 5 }}>
+export default function UserAdd({ handleSubmit }) {
+  return (
+    <Container maxWidth="lg" sx={{ margin: "0 auto", paddingBottom: 5 }}>
       <Typography variant="h3" sx={{ marginBottom: 2 }}>
         ADD USER
       </Typography>
@@ -37,30 +34,35 @@ export default function UserAdd({handleSubmit}) {
               fullWidth={true}
             />
             <TextField
+              name="name"
               type={"text"}
               label={"Last name"}
               variant={"outlined"}
               fullWidth={true}
             />
             <TextField
+              name="email"
               type={"email"}
               label={"Email"}
               variant={"outlined"}
               fullWidth={true}
             />
             <TextField
+              name="age"
               type={"number"}
               label={"Age"}
               variant={"outlined"}
               fullWidth={true}
             />
             <TextField
+              name="phonenumber"
               type={"tel"}
               label={"Phone number"}
               variant={"outlined"}
               fullWidth={true}
             />
             <FormControlLabel
+              name="gender"
               value="female"
               control={<Radio />}
               label="Female"
@@ -68,20 +70,21 @@ export default function UserAdd({handleSubmit}) {
             <FormControlLabel value="male" control={<Radio />} label="Male" />
             <FormControlLabel value="other" control={<Radio />} label="Other" />
             <TextField
+              name="role"
               type={"text"}
               label={"Role"}
               variant={"outlined"}
               fullWidth={true}
             />
-            <TextField
+            {/* <TextField
               type={"file"}
               label={"Upload image"}
               variant={"outlined"}
               fullWidth={true}
-            />
+            /> */}
 
             <TextField
-            name="password"
+              name="password"
               type={"password"}
               label={"Password"}
               variant={"outlined"}
@@ -89,11 +92,16 @@ export default function UserAdd({handleSubmit}) {
             />
           </FormControl>
 
-          <Button variant={"outlined"} type={"submit"} color={"primary"}>
+          <Button
+            variant={"outlined"}
+            type={"submit"}
+            style={{ marginTop: 10 }}
+            color={"primary"}
+          >
             Submit
           </Button>
         </form>
       </Box>
     </Container>
-    )
+  );
 }
