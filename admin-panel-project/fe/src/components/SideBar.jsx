@@ -18,7 +18,7 @@ import Collapse from "@mui/material/Collapse";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import Header from ".//Header";
+import Header from "./Header";
 import { Link, Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Button } from "@mui/material";
