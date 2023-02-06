@@ -6,7 +6,7 @@ import SideBar from "./components/SideBar";
 import Box from "@mui/material/Box";
 import UserAdd from "./pages/UsersAdd";
 import { useEffect, useState } from "react";
-import { fetchAllData, createUsers } from "./services/axiosUserServices";
+import { fetchAll } from "./services/axiosUserServices";
 // import { create } from "@mui/material/styles/createTransitions";
 
 function App() {
@@ -24,14 +24,16 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
-    fetchAllData(URL, setUsers);
+    const data =fetchAll(URL);
+    setUsers(data)
   }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e.target.password.value);
     if (!isUpdate) {
-      createUsers(e, URL, setUsers);
+      const data = createUsers(e, URL);
+      setUsers(data)
     }
     // else {
     //   updateUsers(URL, setUsers);
