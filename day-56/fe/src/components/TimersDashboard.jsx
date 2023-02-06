@@ -32,7 +32,7 @@ export default function TimersDashboard() {
     updateTimer(timerId);
   }
 
-  async function handleTrashClick(timerId) {
+  function handleTrashClick(timerId) {
     deleteTimer(timerId);
   }
 

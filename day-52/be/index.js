@@ -1,9 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs"); //file system module
-const { response } = require("express");
-const { request } = require("http");
-const { ifError } = require("assert");
 
 const app = express();
 const PORT = 8080;
