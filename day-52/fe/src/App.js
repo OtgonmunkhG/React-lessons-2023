@@ -2,8 +2,6 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import {
   fetchAllData,
-  deleteUser,
-  updateUser,
   createUser,
 } from "./services/axiosUserServices";
 
