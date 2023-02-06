@@ -34,6 +34,14 @@ app.post("/users", (requist, response) => {
   const body = requist.body;
   console.log(body);
 
+  const newUser = {
+    id: Date.now().toString(),
+    username: body.name,
+    age: body.age,
+    role: body.role,
+    phonenumber: body.phonenumber,
+  };
+
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
       response.json({
@@ -41,13 +49,27 @@ app.post("/users", (requist, response) => {
         data: [],
       });
     }
-  });
 
-  const objectData = JSON.parse(readData);
+    let dataObject = JSON.parse(readData);
+    dataObject.push(newUser);
+    console.log(dataObject);
 
-  response.json({
-    status: "success",
-    data: objectData,
+    fs.writeFile(
+      "./data/users.json",
+      JSON.stringify(dataObject),
+      (writeError) => {
+        if (writeError) {
+          response.json({
+            status: "file error",
+            data: [],
+          });
+        }
+        response.json({
+          status: "success",
+          data: objectData,
+        });
+      }
+    );
   });
 });
 

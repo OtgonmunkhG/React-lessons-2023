@@ -41,7 +41,7 @@ export default function UserAdd({ handleSubmit }) {
               fullWidth={true}
             />
             <TextField
-              name="email"
+              name={"email"}
               type={"email"}
               label={"Email"}
               variant={"outlined"}

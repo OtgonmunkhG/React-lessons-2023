@@ -41,7 +41,7 @@ function App() {
   return (
     <Box sx={{ display: "flex" }}>
       <SideBar />
-      {/* <UserAdd handleSubmit={handleSubmit} /> */}
+      <UserAdd handleSubmit={handleSubmit} />
       <Routes>
         <Route path="/users/*" element={<Users />}>
           <Route path="add" element={<UserAdd handleSubmit={handleSubmit} />} />
