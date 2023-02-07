@@ -6,8 +6,6 @@ import SideBar from "./components/SideBar";
 import Box from "@mui/material/Box";
 import UserAdd from "./pages/UsersAdd";
 import { useEffect, useState } from "react";
-import { fetchAll } from "./services/axiosUserServices";
-// import { create } from "@mui/material/styles/createTransitions";
 
 function App() {
   const URL = "http://localhost:8080/users";
@@ -24,17 +22,23 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
-    const data =fetchAll(URL);
-    setUsers(data)
+    fetchedData()
   }, []);
+
+  async function fetchedData() {
+    const FETCHED_DATA = await fetch(URL)
+    const FETCHED_JSON = await FETCHED_DATA.json()
+    setUsers(FETCHED_JSON.data.data)
+
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e.target.password.value);
-    if (!isUpdate) {
-      const data = createUsers(e, URL);
-      setUsers(data)
-    }
+    // if (!isUpdate) {
+    //   const data = createUsers(e, URL);
+    //   setUsers(data)
+    // }
     // else {
     //   updateUsers(URL, setUsers);
     // }
