@@ -16,6 +16,14 @@ function App() {
     <div>
       <h1>Day-43-Router</h1>
       <div id='navbar'>
+<<<<<<< HEAD:day43/src/App.js
+        <Link to={'/'}>Home</Link>
+        <Link to={'/about'}>About</Link>
+        <Link to={'/about/test'}>Test</Link>
+        <Link to={'/login'}>Login</Link>
+        <Link to={'/register'}>Register</Link>
+        <Link to={'/feedback'}>FeedbackForm</Link>
+=======
         <a href='/'>Home</a>
         <a href='/about'>About</a>
         <a href='/about/test'>Test</a>
@@ -23,6 +31,7 @@ function App() {
         <a href='/register'>Register</a>
         <a href='/feedback'>FeedbackForm</a>
         <a href='/test'>Test from my hook</a>
+>>>>>>> b333caeaf6e0990e290590f449151bb244a50f16:day-43/src/App.js
       </div>
       <Routes>
         <Route path="/" element={<HomeFunc />} />
