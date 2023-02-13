@@ -1,0 +1,37 @@
+.hover {
+  background-color: antiquewhite;
+}
+.footer-container, 
+.header-container {
+  width: 100vh;
+  height: 70px;
+  padding: 20px 100px;
+  background-color: green;
+  display: flex;
+  justify-content: space-between;
+}
+.header-container {
+  background-color: violet;
+  font-weight: 700;
+  color: aliceblue;
+  opacity: 0.4;
+
+}
+.middle-container {
+  width: 100vh;
+  height: calc(100vh - 140px);
+  padding: 20px;
+}
+.dark {
+background-color: rgb(19, 19, 19);
+color: white;
+}
+.light {
+  color: rgb(19, 19, 19);
+  background-color: aliceblue;
+}
+
+.green {
+  color: rgb(255, 255, 255);
+  background-color: rgb(43, 176, 78);
+}

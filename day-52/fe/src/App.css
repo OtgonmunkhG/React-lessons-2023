@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+label {
+  background-color: pink;
+  box-shadow: 1px -1px 8px 1px ;
+
+  padding: 5px;
+  
+
+}
+input {
+  border: none;
+  margin: 15px;
+ 
+}
