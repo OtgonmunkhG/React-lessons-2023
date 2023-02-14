@@ -1,8 +1,32 @@
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import { Button } from "@mui/material";
+import { Button, InputLabel, Select, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 export default function UserRegisterForm() {
   const URL = "http://localhost:8080/register";
+  const roleURL = "http://localhost:8080/users/roles";
+
+  const [roles, setRoles] = useState([]);
+  const [currentRole, setCurrentRole] = useState(0);
+
+  useEffect(() => {
+    fetchRoles();
+  }, []);
+
+  async function fetchRoles() {
+    const FETCHED_DATA = await fetch(roleURL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setRoles(FETCHED_JSON.data);
+    console.log(roles);
+  }
+
+  function handlSelectChange(e) {
+    console.log(e.target.value);
+    setCurrentRole(e.target.value);
+  }
+
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e.target.firstname.value);
@@ -12,6 +36,7 @@ export default function UserRegisterForm() {
       email: e.target.email.value,
       password: e.target.password.value,
       address: e.target.address.value,
+      role: currentRole,
     };
     const options = {
       method: "POST",
@@ -22,7 +47,10 @@ export default function UserRegisterForm() {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
+    console.log(FETCHED_JSON.status === "success");
+    if (FETCHED_JSON) {
+      navigate("/users");
+    }
   };
   return (
     <div>
@@ -87,6 +115,24 @@ export default function UserRegisterForm() {
               label="Address"
               name="address"
             />
+          </Grid>
+          <Grid item xs={12}>
+            <InputLabel>User Roles</InputLabel>
+            <Select
+              id="role-selector"
+              value={currentRole}
+              label="Roles"
+              onChange={handlSelectChange}
+            >
+              {roles &&
+                roles.map((role, index) => {
+                  return (
+                    <MenuItem key={index} value={role.id}>
+                      {role.name}
+                    </MenuItem>
+                  );
+                })}
+            </Select>
           </Grid>
           <Grid item xs={12}>
             <Button variant="outlined" type="submit">

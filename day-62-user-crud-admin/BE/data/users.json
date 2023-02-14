@@ -1,1 +1,18 @@
-[{"firstname":"Otgonmunkh","lastname":"Gerelbaatar","email":"","password":"","address":""},{"firstname":"Otgonmunkh","lastname":"Gerelbaatar","email":"","password":"","address":""},{"firstname":"Otgonmunkh","lastname":"Gerelbaatar","email":"","password":"","address":""},{"firstname":"Otgonmunkh","lastname":"Gerelbaatar","email":"","password":"","address":""},{"firstname":"helllo","lastname":"we","email":"black.gerelbaatar.otgonmunkh@gmail.ocm","password":"","address":""}]
+[
+  {
+    "firstname": "Otgonmunkh",
+    "lastname": "Gerelbaatar",
+    "email": "",
+    "password": "",
+    "address": "",
+    "role": 1
+  },
+  {
+    "firstname": "Otgonmunkh",
+    "lastname": "we",
+    "email": "",
+    "password": "",
+    "address": "",
+    "role": { "id": 2, "name": "User" }
+  }
+]

@@ -26,23 +26,40 @@ app.post("/register", (request, response) => {
 
     const objectData = JSON.parse(readData);
     console.log(objectData);
-    objectData.push(body);
 
-    fs.writeFile(
-      "./data/users.json",
-      JSON.stringify(objectData),
-      (writeError) => {
-        if (writeError) {
-          response.json({
-            status: "write error",
-          });
-        }
+    fs.readFile("./data/userrole.json", "utf-8", (readError, readData) => {
+      if (readError) {
         response.json({
-          status: "success",
-          data: objectData,
+          status: "file doesn't exist",
+          data: [],
         });
       }
-    );
+
+      const roleData = JSON.parse(readData);
+      const roleName = roleData.filter((role) => role.id === body.role)[0];
+
+      const userData = {
+        ...body,
+        role: roleName,
+      };
+      objectData.push(userData);
+
+      fs.writeFile(
+        "./data/users.json",
+        JSON.stringify(objectData),
+        (writeError) => {
+          if (writeError) {
+            response.json({
+              status: "write error",
+            });
+          }
+          response.json({
+            status: "success",
+            data: objectData,
+          });
+        }
+      );
+    });
   });
 });
 
@@ -53,6 +70,23 @@ app.get("/users", (request, response) => {
     if (readError) {
       response.json({
         status: "file read error",
+        data: [],
+      });
+    }
+    response.json({
+      status: "success",
+      data: JSON.parse(readData),
+    });
+  });
+});
+
+//API get all user roles
+
+app.get("/users/roles", (request, response) => {
+  fs.readFile("./data/userrole.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "file doesn't exist",
         data: [],
       });
     }
