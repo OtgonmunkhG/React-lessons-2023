@@ -3,7 +3,6 @@ console.log("Day- 62 - User Login CRUD");
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
-const { response } = require("express");
 
 const app = express();
 const PORT = 8080;

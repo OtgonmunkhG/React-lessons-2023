@@ -27,6 +27,7 @@ export default function UserRegisterForm() {
   }
 
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e.target.firstname.value);
@@ -47,8 +48,8 @@ export default function UserRegisterForm() {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON.status === "success");
-    if (FETCHED_JSON) {
+
+    if (FETCHED_JSON.status === "success") {
       navigate("/users");
     }
   };
