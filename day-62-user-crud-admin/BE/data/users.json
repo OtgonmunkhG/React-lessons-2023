@@ -2,8 +2,8 @@
   {
     "firstname": "Otgonmunkh",
     "lastname": "Gerelbaatar",
-    "email": "",
-    "password": "",
+    "email": "black.gerelbaatar.otgonmunkh@gmail.com",
+    "password": "12",
     "address": "",
     "role": 1
   },
@@ -14,5 +14,34 @@
     "password": "",
     "address": "",
     "role": { "id": 2, "name": "User" }
+  },
+  {
+    "firstname": "Otgonmunkh",
+    "lastname": "Gerelbaatar",
+    "email": "",
+    "password": "1234567",
+    "address": "",
+    "role": { "id": 2, "name": "User" }
+  },
+  {
+    "email": "black.gerelbaatar.otgonmunkh@gmail.com",
+    "password": "$2b$10$.TafhnYPKZa90V9kTBdTyuusxybrJ.ISx5y4BZVHkUKZkTuzEdCc.",
+    "address": "add",
+    "role": { "id": 1, "name": "Admin" }
+  },
+  {
+    "firstname": "Otgonmunkh",
+    "email": "black.gerelbaatar.otgonmunkh@gmail.com",
+    "password": "$2b$10$KaJpkrvO0YOzkrmU/OeSbeUOPLY0mQPaIZkuWEhbFdIp7UvGZYM3m",
+    "address": "add",
+    "role": { "id": 1, "name": "Admin" }
+  },
+  {
+    "firstname": "Otgonmunkh",
+    "lastname": "Gerelbaatar",
+    "email": "black.gerelbaatar.otgonmunkh@gmail.ocm",
+    "password": "$2b$10$TN8nlmD5IqD/P9s5GeJZQe4uW0l/6LL57.m7nxe.95ofo1AoP3h4G",
+    "address": "add",
+    "role": { "id": 1, "name": "Admin" }
   }
 ]
