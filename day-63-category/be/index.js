@@ -17,6 +17,7 @@ app
     const body = request.body;
     const isEdit = body.isEdit;
     console.log(body);
+    console.log(body.categoryName);
 
     const categoryData = fs.readFileSync("./data/categories.json", {
       encoding: "utf-8",
@@ -39,6 +40,7 @@ app
         name: body.categoryName,
       };
       categoryDataObj.push(newCategory);
+      console.log(newCategory);
     }
 
     // categoryDataObj.push(newCategory);
@@ -54,12 +56,12 @@ app
         data: [],
       });
     } else {
+      response.json({
+        status: "success",
+        data: categoryDataObj,
+      });
+      console.log(typeof categoryData);
     }
-    response.json({
-      status: "success",
-      data: categoryDataObj,
-    });
-    console.log(typeof categoryData);
   })
   .get((request, response) => {
     const readCategoryData = fs.readFileSync("./data/categories.json", {
@@ -126,8 +128,8 @@ app.get("/search", (request, response) => {
 
   const savedCategoriesArrayObj = JSON.parse(savedCategories);
 
-  const foundCategory = savedCategoriesArrayObj.filter((category) =>
-    category.name.includes(request.query.value)
+  const foundCategory = savedCategoriesArrayObj.filter(
+    (category) => category.name == request.query.value
   );
 
   response.json({

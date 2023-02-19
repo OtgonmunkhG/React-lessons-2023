@@ -41,7 +41,7 @@ export default function CategoryEditForm() {
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "application.json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         categoryId: id,
@@ -65,7 +65,7 @@ export default function CategoryEditForm() {
           value={category.name}
           name="categoryName"
           onChange={handleInputChange}
-        />{" "}
+        />
         <br />
         <button type="submit" style={{ margin: 5 }}>
           Edit Save
