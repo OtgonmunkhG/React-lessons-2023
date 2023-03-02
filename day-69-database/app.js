@@ -1,4 +1,4 @@
-console.log("DAY-69 DATABASE");
+console.log("DAY-69 DATABASE rout");
 
 import express, { response, Router } from "express";
 import emp_router from "./rootes/employees.js";
