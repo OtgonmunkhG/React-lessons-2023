@@ -81,11 +81,6 @@ app.post("/register", (request, response) => {
               });
             }
           );
-
-          // const userData = {
-          //   ...body,
-          //   role: roleName,
-          // };
         });
       });
     });
