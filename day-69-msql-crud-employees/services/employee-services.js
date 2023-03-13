@@ -3,7 +3,6 @@ import { pool } from "../config/mysql-config.js";
 export async function getEmployees() {
   const [rows] = await pool.query(`select * from employees limit 10`);
   console.log(rows);
-
   return rows;
 }
 
@@ -11,6 +10,7 @@ export async function getMaxNo() {
   const [rows] = await pool.query("select max(emp_no) as max from employees");
   return rows[0];
 }
+
 export async function hireEmployee(
   empNo,
   birthDate,
@@ -19,7 +19,8 @@ export async function hireEmployee(
   gender,
   hireDate
 ) {
-  const query = ` insert into employees values(?, ? ,? ,? ,? ,?)`;
+  // const query = `INSERT INTO employees VALUES(@max_emp_id + 1, '1990-01-01', 'John', 'McKay', 'M', '2010-01-01')`;
+  const query = `INSERT INTO employees VALUES(?, ?, ? , ?, ?, ?)`;
   const [rows] = await pool.query(query, [
     empNo,
     birthDate,
@@ -30,14 +31,11 @@ export async function hireEmployee(
   ]);
   return rows;
 }
-export async function updateEmployee(empNo, lastName, gender) {
-  const query = `update employees SET last_name=?, gender=? where emp_no =?`;
-  const [rows] = await pool.query(query, [lastName, gender, empNo]);
-  return rows;
-}
+
+export async function updateEmployee(empNo, lastName, gender) {}
 
 export async function fireEmployee(empNo) {
-  const query = `delete from employees where emp_no=${empNo}`;
+  const query = `DELETE FROM employees WHERE emp_no = ${empNo}`;
   const [rows] = await pool.query(query);
 
   return rows;
