@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Test from "./components/test/Test";
 import About from "./components/About";
 import "./App.css";
@@ -15,6 +15,7 @@ function App() {
   return (
     <div>
       <h1>Day-43-Router</h1>
+
       <div id="navbar">
         <Link to={"/"}>Home</Link>
         <Link to={"/about"}>About</Link>
