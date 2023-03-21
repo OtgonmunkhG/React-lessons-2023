@@ -1,20 +1,11 @@
-POST  http://localhost:8181/create HTTP/1.1
+POST  http://localhost:8181/todo/create HTTP/1.1
 Content-Type: application/json
 
-[
     {
         "name": "Washing Dishes",
-        "checked": false
-    },
-     {
-        "name": "Groceries",
-        "checked": false
-    },
-     {
-        "name": "Bathing Kids",
-        "checked": false
+        "checked": false,
+        "category": "641299d4f487876905e281d0"
     }
-]
 
 
 ###
@@ -32,7 +23,7 @@ Content-Type: application/json
     
 ###
 
-GET http://localhost:8181/list HTTP/1.1
+GET http://localhost:8181/todo/list HTTP/1.1
 Content-Type: application/json
 
 ###
@@ -41,5 +32,5 @@ DELETE  http://localhost:8181/delete HTTP/1.1
 Content-Type: application/json
 
 {
-    "checked": true
+    "checked": false
 }
