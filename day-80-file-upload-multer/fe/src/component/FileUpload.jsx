@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function FileUpload() {
   const [imageUrl, setImageUrl] = useState([]);
   const FILE_URL = "http://localhost:8181/files";
+  const URL = "http://localhost:8181/fileUpload";
   async function fetchFiles() {
     const FETCHED_DATA = await fetch(FILE_URL);
 
@@ -12,7 +13,7 @@ export default function FileUpload() {
   useEffect(() => {
     fetchFiles();
   }, []);
-  const URL = "http://localhost:8181/fileUpload";
+
   const handleFileUpload = async (event) => {
     event.preventDefault();
     console.log(event.target.image.files[0]);
