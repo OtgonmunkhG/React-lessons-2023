@@ -10,13 +10,13 @@ Content-Type: application/json
 
 ###
 
-PUT  http://localhost:8181/update HTTP/1.1
+PUT  http://localhost:8181/todo/update HTTP/1.1
 Content-Type: application/json
 
 [
     
         {"checked": true},
-        {"name": "Bathing Kids"}
+        {"name": "Washing Dishes"}
 
 ]
 
