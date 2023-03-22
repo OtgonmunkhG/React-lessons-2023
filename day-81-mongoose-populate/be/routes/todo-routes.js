@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express");
 const Todo = require("../models/Todo");
 
@@ -27,12 +28,22 @@ todoRouter.put("/update", async (request, response) => {
 todoRouter.delete("/delete", async (request, response) => {
   const body = request.body;
 
-  const result = await Todo.deleteMany(body);
+  const result = await Todo.deleteMany(body).populate("category");
 
   response.status(200).json({
     data: result,
   });
 });
+
+// todoRouter.delete("/delete", async (request, response) => {
+//   const body = request.body;
+//   const todo = await Todo.deleteMany(body);
+//   const result = await todo.populate("category");
+
+//   response.status(200).json({
+//     data: result,
+//   });
+// });
 
 todoRouter.post("/create", async (request, response) => {
   const body = request.body;
