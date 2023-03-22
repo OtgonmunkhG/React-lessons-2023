@@ -7,7 +7,7 @@ const todoShema = new mongoose.Schema({
   },
   checked: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
 });
