@@ -9,6 +9,7 @@ export default function FileUpload() {
 
     const FETCHED_JSON = await FETCHED_DATA.json();
     setImageUrl(FETCHED_JSON.data);
+    console.log(FETCHED_JSON.data);
   }
   useEffect(() => {
     fetchFiles();
@@ -45,7 +46,7 @@ export default function FileUpload() {
       <ul>
         <li>
           {imageUrl.map((element, index) => {
-            <img key={index} src={element} />;
+            return <img key={index} src={element} />;
           })}
         </li>
       </ul>
