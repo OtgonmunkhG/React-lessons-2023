@@ -16,7 +16,7 @@ const verifyToken = (request, response, next) => {
     const decoded = jwt.verify(token, "MySuperDuperPrivateKey");
     request.user = decoded;
   } catch (error) {
-    return request.status(401).json({
+    return response.status(401).json({
       success: false,
       message: "Doesn't exit token",
     });
