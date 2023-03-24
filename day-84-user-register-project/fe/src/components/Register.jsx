@@ -62,7 +62,7 @@ export default function Register() {
       >
         <label htmlFor="firstname">
           First Name:
-          <input type="text" name="fistname" onChange={handleChange} />
+          <input type="text" name="firstname" onChange={handleChange} />
         </label>
         <label htmlFor="lastname">
           Last Name:
@@ -103,7 +103,7 @@ export default function Register() {
             onChange={handleChange}
           ></textarea>
         </label>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

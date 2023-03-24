@@ -3,16 +3,15 @@ const Users = require("../models/Users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const UserRole = require("../models/UserRole");
-const apiRouter = require("./api");
-const User = require("../models/Users");
 
 const adminRouter = express.Router();
 
 adminRouter.post("/register", async (request, response) => {
   const data = request.body;
-  console.log(data);
+  // console.log(data);
   // console.log(email);
   if (data) {
+    console.log(data);
     const oldUser = await Users.findOne({ email: data.email });
     if (oldUser) {
       return response.json({
@@ -24,7 +23,7 @@ adminRouter.post("/register", async (request, response) => {
     data.password = hashedPassword;
 
     try {
-      const user = new Users.create(data);
+      const user = await Users.create(data);
       const result = await user.populate("userrole");
       response.status(201).json({
         message: "Successfull create user",

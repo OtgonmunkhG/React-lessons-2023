@@ -64,7 +64,7 @@ export default function UserRegisterForm() {
               size="small"
               defaultValue=""
               label="First name"
-              name="fistname"
+              name="firstname"
             />
           </Grid>
           <Grid item xs={12}>
