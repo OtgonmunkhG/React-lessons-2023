@@ -5,12 +5,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const apiRouter = require("./routes/api");
 const adminRouter = require("./routes/admin-api");
-const { response } = require("express");
-const MONGO_CONNECTION_SRTING =
-  "mongodb+srv://blackgerelbaatarotgonmunkh:O1234567@cluster0.blpjoju.mongodb.net/day-82";
+require("dotenv").config();
+const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 const app = express();
-const PORT = 8181;
+const PORT = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -23,7 +22,7 @@ app.get("/", (request, response) => {
 
 app.listen(PORT, () => {
   mongoose
-    .connect(MONGO_CONNECTION_SRTING)
+    .connect(MONGO_CONNECTION_STRING)
     .then(() => console.log("Database connected successfully"))
     .catch((error) => console.error(error));
   console.log(`Service is running on http://localhost:${PORT}`);
