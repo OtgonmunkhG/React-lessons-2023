@@ -1,0 +1,23 @@
+POST  http://localhost:8181/admin/register HTTP/1.1
+Content-Type: application/json
+
+    {
+        "email": "g.11otgonmunkh12@gmail.com",
+        "password": "1234" 
+
+    }
+    
+
+###
+
+POST  http://localhost:8181/admin/login HTTP/1.1
+Content-Type: application/json
+
+    {
+        "email": "g.otgonmunkh@gmail.com",
+        "password": "1234" 
+
+    }
+
+
+###

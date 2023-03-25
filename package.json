@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "font-awesome": "^4.7.0",
-    "nodemon": "^2.0.20",
+    "mongoose": "^7.0.2",
     "react-router-dom": "^6.6.2"
   },
   "name": "react-lessons-2023",
@@ -22,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/OtgonmunkhG/React-lessons-2023/issues"
   },
-  "homepage": "https://github.com/OtgonmunkhG/React-lessons-2023#readme"
+  "homepage": "https://github.com/OtgonmunkhG/React-lessons-2023#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
 }

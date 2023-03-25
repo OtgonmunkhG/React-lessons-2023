@@ -1,0 +1,23 @@
+POST  http://localhost:8181/api/protected HTTP/1.1
+Content-Type: application/json
+
+
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQxYTY2MmMyMjZlNWY3NjlmZDVjMmFmIiwiZW1haWwiOiJnLm90Z29ubXVua2hAZ21haWwuY29tIiwiaWF0IjoxNjc5NDU3ODUyLCJleHAiOjE2Nzk1NDQyNTJ9.2xd7mngL7cWsqmQSf4Qz3CC1vkHGq4gqzCbDtixwQDw" 
+
+    }
+    
+
+
+
+###
+
+POST  http://localhost:8181/api/unprotected HTTP/1.1
+Content-Type: application/json
+
+   {
+        "token": ""
+    }
+
+
+###

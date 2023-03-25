@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+form {
+  background-color: paleturquoise;
+}
+
+input {
+  padding: 5px;
+  margin: 3px;
+  border: 4px;
+  text-decoration: none;
+}
