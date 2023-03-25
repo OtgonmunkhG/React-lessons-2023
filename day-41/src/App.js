@@ -38,9 +38,9 @@ function App() {
         <p>{inputText}</p>
         <input value={inputText} onChange={(e) => { handleInput(e) }}></input>
         <Counter/>
-        <UpdateArrays/>
+        {/* <UpdateArrays/>
         <List/>
-        <Exercises/>
+        <Exercises/> */}
        
       </div>
     </div>
