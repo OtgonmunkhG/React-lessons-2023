@@ -12,8 +12,8 @@ import { NeighborhoodContext } from "../context/neighborhoods.context";
 import { RestaurantContext } from "../context/restaurants.context";
 
 export default function Map() {
-  //   const restaurants = useContext(RestaurantContext);
-  //   console.log(restaurants);
+  const restaurants = useContext(RestaurantContext);
+  console.log(restaurants);
   const neighborhoods = useContext(NeighborhoodContext);
   console.log(neighborhoods);
   const redOptions = { color: "red" };
@@ -27,7 +27,7 @@ export default function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* {restaurants &&
+        {restaurants &&
           restaurants.map((element, index) => {
             return (
               <Marker
@@ -39,8 +39,8 @@ export default function Map() {
                 </Popup>
               </Marker>
             );
-          })} */}
-
+          })}
+        {/* 
         {neighborhoods &&
           neighborhoods.map((element, index) => {
             return (
@@ -56,7 +56,7 @@ export default function Map() {
                 <Popup>Popup in CircleMarker</Popup>
               </CircleMarker>
             );
-          })}
+          })} */}
 
         {neighborhoods &&
           neighborhoods.map((element, index) => {
@@ -69,6 +69,35 @@ export default function Map() {
               />
             );
           })}
+
+        {neighborhoods.map((neighborhood, index) => {
+          //   const polygon = [
+          //     [51.515, -0.09],
+          //     [51.52, -0.1],
+          //     [51.52, -0.12],
+          //   ];
+          const polygon = [neighborhood.geometry.coordinates[0]];
+
+          const revPolygon = polygon.map((subArr) => {
+            const len = subArr.length;
+            const reversedSubArr = [];
+
+            for (let i = len - 1; i >= 0; i--) {
+              reversedSubArr.push([subArr[i][1], subArr[i][0]]);
+            }
+            return reversedSubArr;
+          });
+
+          console.log(polygon);
+          console.log(revPolygon);
+          const purpleOptions = { color: "purple" };
+
+          return (
+            <div>
+              <Polygon pathOptions={purpleOptions} positions={revPolygon} />
+            </div>
+          );
+        })}
       </MapContainer>
     </div>
   );
