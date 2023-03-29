@@ -38,11 +38,6 @@ exports.createTransactionWithOutSession = async (req, res) => {
         $inc: { quantity: 10 },
       }
     );
-    // const product = await Product.updateOne({
-    //   _id: "64224e0878e62b7a679ee000",
-    //   quantity: 2,
-    // });
-    // console.log("product", product);
     const user = await User.create(req.body.user);
     const shippingAddress = await ShippingAddress.create({
       address: req.body.shippingAddress,
