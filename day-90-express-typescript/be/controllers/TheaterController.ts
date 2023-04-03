@@ -24,10 +24,17 @@ export const getTheaterById = async (req:Request, res:Response) => {
 
 export const searchTheaters = async (req: Request, res: Response) => {
     console.log(req.query.keyword)
-    const define = {$regex: req.query.keyword}
+    const define: string = String (req.query.keyword)
 
     try {
-        const search = await TheaterModel.findOne({"location.address.street1": define})
+        const search = await TheaterModel.find({
+            $or: [{
+                "location.address.street1": {$regex: define}},
+                {"location.address.city": {$regex: define}},
+                {"location.address.zipcode": {$regex: define}},
+                {"location.address.state": {$regex: new RegExp(define, "i")}
+        }]
+        })
         // const keyword: string = req.query.keyword
 
         
