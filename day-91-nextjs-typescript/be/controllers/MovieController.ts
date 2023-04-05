@@ -1,4 +1,4 @@
-import MovieModel from "../models/Movies.model";
+import MovieModel from "../models/movies.model";
 import { Request, Response } from "express";
 export const getMovies = async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 0;
