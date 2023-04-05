@@ -5,6 +5,6 @@ const movieRouter = Router();
 
 movieRouter.get("/pagination", getMovies);
 
-// movieRouter.get("/");
+movieRouter.get("/");
 
 export default movieRouter;
