@@ -7,6 +7,72 @@
   min-height: 100vh;
 }
 
+.main_root {
+  width: 98vw;
+  margin: 0 auto;
+  height: 100vh;
+}
+.navigation {
+  background-color: red;
+  height: 110px;
+  width: 98vw;
+  margin: 0 auto;
+
+}
+
+.header {
+  display: flex;
+  gap: 25px;
+  align-items: flex-end;
+  justify-content: flex-end;
+ margin-top: 8px;
+}
+.image {
+  height: 100px;
+  width: 170px;
+
+}
+
+.search {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  font-size: 13px;
+}
+
+.input {
+  border-radius: 30px;
+  height: 38px;
+  color: aliceblue;
+  width: 300px;
+  border: 3px, solid, white;
+}
+
+
+.button {
+ display: flex;
+ gap: 30px;
+
+
+}
+
+.item {
+  text-decoration: none;
+  background-color: red;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.item:hover {
+  transition-duration: 0s;
+  background-color: aliceblue;
+  color: black;
+}
+
+.top {
+  background-color: darkgray;
+}
 .description {
   display: inherit;
   justify-content: inherit;
@@ -18,6 +84,21 @@
   font-family: var(--font-mono);
 }
 
+.add {
+  text-decoration: none;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+
+}
+
+.root {
+  margin-right: 5px;
+}
+
+.form {
+  background-image: "https://thumbs.dreamstime.com/b/outline-search-icon-vector-illustration-isolated-transparent-background-sign-symbol-black-white-style-207070400.jpg";
+}
 .description a {
   display: flex;
   justify-content: center;
