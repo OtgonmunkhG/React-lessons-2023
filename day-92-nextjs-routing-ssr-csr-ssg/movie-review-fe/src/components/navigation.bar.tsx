@@ -77,7 +77,7 @@ export default function NavigationBar(): JSX.Element {
 
   return (
     <div className={styles.main_root}>
-      <div className={styles.navigation}>
+      <div className="bg-red-600 lg:max-w-6xl mx-auto px-4">
         <div className={styles.header}>
           {/* <h1>Navigation Bar</h1> */}
           <h5>What's the Tomatometer®?</h5>
@@ -109,8 +109,8 @@ export default function NavigationBar(): JSX.Element {
             <button className={styles.item}>SHOWTIMES</button>
           </div>
         </div>
-        <div className="text-amber-300 bg-neutral-400 m-0 p-1 box-border">
-          TRENDING ON RT{" "}
+        <div className="text-amber-300 bg-neutral-400">
+          TRENDING ON RT
           <span className="text-stone-50">
             Everything We Know About Guardians Of The Galaxy Vol. 3
           </span>
@@ -119,15 +119,17 @@ export default function NavigationBar(): JSX.Element {
       <div className=" bg-whie text-tahiti grid gap-5  sm:grid-cols-2 md:grid-cols-6 2xl:grid-cols-6 justify-between container mx-auto px-4 my-7">
         {movie.map((element, index) =>
           element.poster ? (
-            <div key={index}>
+            <div key={index} className="mx-auto px-4	text-center">
               <img src={element.poster} alt="" />
               <h6>{element.title}</h6>
             </div>
           ) : (
-            <img
+           <div className="mx-auto px-4	">
+             <img
               src="https://m.media-amazon.com/images/M/MV5BNTY0ODRmZDktMzM2MC00NThmLWEyMDMtODQzNWEyMjMxYTYzXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg"
               alt=""
             />
+           </div>
           )
         )}
       </div>
