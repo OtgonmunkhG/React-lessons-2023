@@ -12,3 +12,12 @@ export const getMovies = async (req: Request, res: Response) => {
     res.status(404).json(error);
   }
 };
+
+export const getAllMovies = async (req: Request, res: Response) => {
+  try {
+    const allMovies = await MovieModel.find({}).limit(24);
+    res.status(200).json(allMovies);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+};

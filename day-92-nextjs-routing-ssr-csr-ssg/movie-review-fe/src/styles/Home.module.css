@@ -3,18 +3,17 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  /* padding: 6rem; */
   min-height: 100vh;
 }
 
 .main_root {
   width: 98vw;
-  margin: 0 auto;
   height: 100vh;
 }
 .navigation {
   background-color: red;
-  height: 110px;
+  height: 130px;
   width: 98vw;
   margin: 0 auto;
 
@@ -72,7 +71,14 @@
 
 .top {
   background-color: darkgray;
+  color: orange;
 }
+
+.images {
+  height: 200px;
+  border-radius: 12px;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
