@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getMovies } from "../controllers/MovieController";
+import { getMovies, getAllMovies } from "../controllers/MovieController";
 
 const movieRouter = Router();
 
 movieRouter.get("/pagination", getMovies);
 
-movieRouter.get("/");
+movieRouter.get("/list", getAllMovies);
 
 export default movieRouter;

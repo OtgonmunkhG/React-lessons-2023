@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import theaterRouter from "./routes/Theaters.api";
-// import movieRouter from "./routes/Movies.api";
+import movieRouter from "./routes/Movies.api";
 dotenv.config();
 import cors from "cors";
 
@@ -34,7 +34,7 @@ let name: string = "<h1>Day - 91 Nextjs-Typescript</h1>";
 app.use(express());
 app.use(cors());
 app.use("/theaters", theaterRouter);
-// app.use("/movies", movieRouter);
+app.use("/movies", movieRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send(name);
