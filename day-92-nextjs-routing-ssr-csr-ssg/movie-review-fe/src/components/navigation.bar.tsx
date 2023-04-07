@@ -77,7 +77,7 @@ export default function NavigationBar(): JSX.Element {
 
   return (
     <div className={styles.main_root}>
-      <div className="bg-red-600 lg:max-w-6xl mx-auto px-4">
+      <div className="theme-bg-red lg:max-w-6xl mx-auto px-4">
         <div className={styles.header}>
           {/* <h1>Navigation Bar</h1> */}
           <h5>What's the Tomatometer®?</h5>
@@ -124,12 +124,12 @@ export default function NavigationBar(): JSX.Element {
               <h6>{element.title}</h6>
             </div>
           ) : (
-           <div className="mx-auto px-4	">
-             <img
-              src="https://m.media-amazon.com/images/M/MV5BNTY0ODRmZDktMzM2MC00NThmLWEyMDMtODQzNWEyMjMxYTYzXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg"
-              alt=""
-            />
-           </div>
+            <div className="mx-auto px-4	">
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BNTY0ODRmZDktMzM2MC00NThmLWEyMDMtODQzNWEyMjMxYTYzXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg"
+                alt=""
+              />
+            </div>
           )
         )}
       </div>
