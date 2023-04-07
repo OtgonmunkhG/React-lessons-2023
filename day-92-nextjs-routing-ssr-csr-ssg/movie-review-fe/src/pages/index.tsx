@@ -21,11 +21,11 @@ export default function Home(props: any): JSX.Element {
   return (
     <div className={styles.main}>
       <NavigationBar />
-      <div>Welcome !</div> <div>You're current on the {side}-side</div>
+      {/* <div>Welcome !</div> <div>You're current on the {side}-side</div>
       <Link href="/about">About Page</Link>
       <Link href="/contact">Contact Page</Link>
       <Link href="/greeting/Jhon?age=18">Greeting Page</Link>
-      {/* <Link href="/post/05-20-2023/first-props">Posts Page</Link> */}
+      <Link href="/post/05-20-2023/first-props">Posts Page</Link>
       <Link
         href={{
           pathname: "/post/[date]/[slug]",
@@ -33,7 +33,7 @@ export default function Home(props: any): JSX.Element {
         }}
       >
         Posts Page
-      </Link>
+      </Link> */}
     </div>
   );
 }

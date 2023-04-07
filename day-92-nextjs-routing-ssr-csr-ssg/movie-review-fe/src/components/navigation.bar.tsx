@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
+import Image from "next/image";
+import moment from "moment";
 
 interface IGenre {
   genres: string[];
@@ -37,7 +39,7 @@ interface IViewer {
 }
 interface ITomatoes {
   viewer: IViewer;
-  lastUpdated: Date;
+  lastUpdated: string;
 }
 interface IMovie {
   plot: string;
@@ -52,7 +54,6 @@ interface IMovie {
   directors: IDirector;
   writers: IWriter;
   awards: IAward;
-  lastupdated: Date;
   year: number;
   imdb: IImdb;
   countries: string[];
@@ -76,8 +77,8 @@ export default function NavigationBar(): JSX.Element {
   }, []);
 
   return (
-    <div className={styles.main_root}>
-      <div className="theme-bg-red lg:max-w-6xl mx-auto px-4">
+    <div className="bg-white">
+      <div className="bg-red lg:max-w-6xl mx-auto">
         <div className={styles.header}>
           {/* <h1>Navigation Bar</h1> */}
           <h5>What's the Tomatometer®?</h5>
@@ -116,17 +117,44 @@ export default function NavigationBar(): JSX.Element {
           </span>
         </div>
       </div>
-      <div className=" bg-whie text-tahiti grid gap-5  sm:grid-cols-2 md:grid-cols-6 2xl:grid-cols-6 justify-between container mx-auto px-4 my-7">
+      <div className=" bg-whie text-tahiti grid gap-5 lg:max-w-6xl sm:grid-cols-2 md:grid-cols-6 2xl:grid-cols-6 justify-between container mx-auto px-1 ">
         {movie.map((element, index) =>
           element.poster ? (
-            <div key={index} className="mx-auto px-4	text-center">
-              <img src={element.poster} alt="" />
-              <h6>{element.title}</h6>
+            <div key={index} className="mx-auto px-1	text-center">
+              <img
+                className="hover:opacity-75 rounded-lg h-96  shadow-xl w-72 md:h-60"
+                src={element.poster}
+                alt=""
+              />
+              <div className="text-black grid md:grid-cols-4 gap-3  sm:grid-cols-4 justify-between container mx-auto">
+                <div className="grid md:grid-cols-2 sm:grid-cols-2">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rotten_Tomatoes.svg/278px-Rotten_Tomatoes.svg.png?20180311145654"
+                    alt=""
+                    className="h-5 w-5"
+                  />
+                  <span>{element.tomatoes.viewer.rating}</span>
+                </div>
+                <div className="grid md:grid-cols-2 sm:grid-cols-2">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Rotten_Tomatoes_positive_audience.svg/212px-Rotten_Tomatoes_positive_audience.svg.png?20200101015220"
+                    alt=""
+                    className="h-5 w-5"
+                  />{" "}
+                  <span>{element.tomatoes.viewer.meter}%</span>
+                </div>
+              </div>
+              <h6 className="text-sm font-serif text-black">{element.title}</h6>
+              <p className="text-black text-sm">
+                Opened{" "}
+                {moment(element.tomatoes.lastUpdated).format("MMM Do YYYY")}
+              </p>
             </div>
           ) : (
-            <div className="mx-auto px-4	">
+            <div className="mx-auto px-1	">
               <img
-                src="https://m.media-amazon.com/images/M/MV5BNTY0ODRmZDktMzM2MC00NThmLWEyMDMtODQzNWEyMjMxYTYzXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_SX677_AL_.jpg"
+                className="hover:opacity-75 rounded-lg h-96  shadow-2xl w-72 md:h-60"
+                src="https://www.take5reviews.ca/uploads/9/7/5/5/97557460/super-mario-bros-23_2.png"
                 alt=""
               />
             </div>
