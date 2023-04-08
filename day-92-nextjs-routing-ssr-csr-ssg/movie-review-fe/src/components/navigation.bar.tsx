@@ -79,14 +79,13 @@ export default function NavigationBar(): JSX.Element {
   return (
     <div className="bg-white">
       <div className="bg-red lg:max-w-6xl mx-auto">
-        <div className={styles.header}>
+        <div className="sm:hidden md:block grid grid-cols-4">
           {/* <h1>Navigation Bar</h1> */}
           <h5>What's the Tomatometer®?</h5>
           <h5>Critics</h5>
-          <div className={styles.root}>
-            <button className={styles.add}>LOGIN</button>
-            <button className={styles.add}>/SIGNUP</button>
-          </div>
+
+          <button className={styles.add}>LOGIN</button>
+          <button className={styles.add}>/SIGNUP</button>
         </div>
         <div className={styles.search}>
           <img
@@ -100,24 +99,29 @@ export default function NavigationBar(): JSX.Element {
               type="search"
               name="search"
               id=""
-              placeholder=" 🔍 Search movies, TV, actors, more..."
+              placeholder=" 🔍 Search"
             />
           </form>
-          <div className={styles.button}>
+          <div className="sm:hidden md:block">
             <button className={styles.item}>MOVIES</button>
             <button className={styles.item}>TV SHOWS</button>
             <button className={styles.item}>NEWS</button>
             <button className={styles.item}>SHOWTIMES</button>
           </div>
         </div>
-        <div className="text-amber-300 bg-neutral-400">
-          TRENDING ON RT
-          <span className="text-stone-50">
-            Everything We Know About Guardians Of The Galaxy Vol. 3
-          </span>
+        <div className="text-amber-300 bg-neutral-400 h-5 md:h-5  sm:hidden md:block ">
+          <div className="grid">
+            <div>TRENDING ON RT</div>
+            <span className="text-stone-50">
+              Everything We Know About Guardians Of The Galaxy Vol. 3
+            </span>
+          </div>
+          <div>
+            <svg xmlns="http://www.w3.org/200/svg"></svg>
+          </div>
         </div>
       </div>
-      <div className=" bg-whie text-tahiti grid gap-5 lg:max-w-6xl sm:grid-cols-2 md:grid-cols-6 2xl:grid-cols-6 justify-between container mx-auto px-1 ">
+      <div className=" text-black grid md:grid-cols-6 gap-3 sm:grid-cols-4 justify-between container mx-auto lg:max-w-6xl">
         {movie.map((element, index) =>
           element.poster ? (
             <div key={index} className="mx-auto px-1	text-center">
