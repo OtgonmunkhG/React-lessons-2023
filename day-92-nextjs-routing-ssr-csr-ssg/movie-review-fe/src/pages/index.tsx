@@ -15,7 +15,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home(props: any): JSX.Element {
-  console.log(props);
+  // console.log(props);
 
   const side = typeof window ? "client" : "server";
   return (
