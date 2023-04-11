@@ -55,8 +55,6 @@ export default function NavigationBar(): JSX.Element {
         </div>
       </div>
       <MoviesList />
-
-      <Pagination />
     </div>
   );
 }

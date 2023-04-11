@@ -1,42 +1,45 @@
 import React, { useEffect, useState } from "react";
 
-export default function Pagination() {
+export default function Pagination({ setMovie }): JSX.Element {
+  const [count, setCount] = useState(1);
   const ALL_URL = "http://localhost:8181/movies/pagination";
-  const [movie, setMovie] = useState([]);
-  async function fetchedAll(url: string) {
-    const response = await fetch(url);
-    const result = await response.json();
-    setMovie(result);
-    console.log(movie);
+  // const [movie, setMovie] = useState([]);
+  // async function fetchedAll(url: string) {
+  //   const response = await fetch(url);
+  //   const result = await response.json();
+  //   setMovie(result);
+  //   console.log(movie);
+  // }
+
+  // useEffect(() => {
+  //   fetchedAll(ALL_URL);
+  // }, []);
+
+  function handleClick() {
+    setCount(count + 1);
+    fetchData(count + 1);
   }
 
-  useEffect(() => {
-    fetchedAll(ALL_URL);
-  }, []);
+  const fetchData = async (cnt: number) => {
+    const response = await fetch(ALL_URL + `?page=${cnt}&moviesPerPage=18`);
+    const result = await response.json();
+    setMovie(result);
+  };
+
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-      <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href="#"
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Previous
-        </a>
-        <a
-          href="#"
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Next
-        </a>
-      </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div className="mx-auto">
           <nav
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
             aria-label="Pagination"
           >
-            <a
-              href="#"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setCount(count - 1);
+                fetchData(count - 1);
+              }}
               className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Previous</span>
@@ -52,49 +55,17 @@ export default function Pagination() {
                   clip-rule="evenodd"
                 />
               </svg>
-            </a>
+            </button>
             <a
               href="#"
               aria-current="page"
               className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              1
+              {count}
             </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              2
-            </a>
-            <a
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              3
-            </a>
-            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
-              ...
-            </span>
-            <a
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              8
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              9
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              10
-            </a>
-            <a
-              href="#"
+
+            <button
+              onClick={handleClick}
               className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Next</span>
@@ -110,7 +81,7 @@ export default function Pagination() {
                   clip-rule="evenodd"
                 />
               </svg>
-            </a>
+            </button>
           </nav>
         </div>
       </div>

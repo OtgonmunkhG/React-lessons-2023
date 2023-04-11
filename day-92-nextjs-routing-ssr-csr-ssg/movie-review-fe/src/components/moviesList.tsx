@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import moment from "moment";
+import Pagination from "./pagination";
 
 interface IGenre {
   genres: string[];
@@ -118,6 +119,8 @@ export default function MoviesList(): JSX.Element {
           </div>
         )
       )}
+
+      <Pagination setMovie={setMovie} />
     </div>
   );
 }
