@@ -5,6 +5,7 @@
     "express": "^4.18.2",
     "font-awesome": "^4.7.0",
     "mongoose": "^7.0.2",
+    "nest": "^0.1.6",
     "react-router-dom": "^6.6.2"
   },
   "name": "react-lessons-2023",
