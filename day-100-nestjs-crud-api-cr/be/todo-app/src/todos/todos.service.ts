@@ -27,8 +27,8 @@ export class TodosService {
     return `This action returns a #${id} todo`;
   }
 
-  async update(id: string, updateTodoDto: UpdateTodoDto) {
-    const updateTodo = await this.todoModel.findByIdAndUpdate(
+  async update(id: string, updateTodoDto: UpdateTodoDto): Promise<Todo> {
+    const updateTodo = await this.todoModel.findOneAndUpdate(
       { _id: id },
       updateTodoDto,
     );
