@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function Pagination({ setMovie }): JSX.Element {
+export default function Pagination({ setMovie }: any): JSX.Element {
   const [count, setCount] = useState(1);
   const ALL_URL = "http://localhost:8181/movies/pagination";
   // const [movie, setMovie] = useState([]);
