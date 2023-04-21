@@ -9,7 +9,7 @@ const categoryRouter = require("./routes/category-routes");
 const app = express();
 const PORT = 8181;
 const MONGO_CONNECTION_SRTING =
-  "mongodb+srv://blackgerelbaatarotgonmunkh:O1234567@cluster0.blpjoju.mongodb.net/test";
+  "mongodb+srv://blackgerelbaatarotgonmunkh:otgoo0000@cluster0.blpjoju.mongodb.net/test";
 
 app.use(express.json());
 app.use(cors());
