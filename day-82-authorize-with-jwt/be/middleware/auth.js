@@ -5,6 +5,7 @@ const verifyToken = (request, response, next) => {
     request.body.token ||
     request.quirey.token ||
     request.headers["x-access-token"];
+    console.log(token)
   if (!token) {
     return request.status(403).json({
       success: false,
