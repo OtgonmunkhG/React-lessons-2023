@@ -2,6 +2,7 @@ import TheaterModel from "../models/theaters.model";
 import { Request, Response } from "express";
 export const getTheaters = async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 0;
+  console.log(page);
   const moviesPerPage: number = Number(req.query.moviesPerPage) || 5;
 
   try {
@@ -18,7 +19,7 @@ export const getTheaterById = async (req: Request, res: Response) => {
   try {
     console.log(req.params.id);
     const theater = await TheaterModel.find({
-      theaterId: Number(req.params.id),
+      $or: [{ theaterId: req.params.id }, { _id: req.params.id }],
     });
     res.status(200).json(theater);
   } catch (err) {
