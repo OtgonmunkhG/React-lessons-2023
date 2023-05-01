@@ -35,18 +35,25 @@ export default function Header() {
             )}
 
             {session?.user && (
-              <div>
+              <div className={styles.navItems}>
                 {session?.user.image && (
-                  <span
-                    style={{ backgroundImage: `url(${session.user.image})` }}
-                    className={styles.avatar}
-                  ></span>
+                  <div>
+                    <span
+                      style={{ backgroundImage: `url(${session.user.image})` }}
+                      className={styles.avatar}
+                    ></span>
+                    <span className={styles.signedInText}>
+                      <div>
+                        <small>Signed in as</small>
+                        <br />
+                        <strong>
+                          {session.user.email || session.user.name}
+                        </strong>
+                      </div>
+                    </span>
+                  </div>
                 )}
-                <span className={styles.signedInText}>
-                  <small>Signed in as</small>
-                  <br />
-                  <strong>{session.user.name || session.user.email}</strong>
-                </span>
+
                 <a
                   href={`/api/auth/signout`}
                   className={styles.button}
