@@ -4,7 +4,7 @@ import NavigationBar from "@/components/navigation.bar";
 import styles from "@/styles/Home.module.css";
 
 export async function getServerSideProps() {
-  const theaterRequest = await fetch("http://localhost:8181/movies/list");
+  const theaterRequest = await fetch("http://localhost:8080/movies/list");
   const theaterData = await theaterRequest.json();
   console.log(theaterData);
   return {
