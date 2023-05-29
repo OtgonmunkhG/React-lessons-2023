@@ -63,7 +63,7 @@ interface IMovie {
 }
 
 export default function MoviesList(): JSX.Element {
-  const URL = "http://localhost:8181/movies/list";
+  const URL = "http://localhost:8080/movies/list";
   const [movie, setMovie] = useState<IMovie[]>([]);
 
   async function fetchedAll(url: string) {
